@@ -9,31 +9,36 @@ let currentIndex = 0;
 let touchStartX = 0;
 let touchEndX = 0;
 
-// Get all images from gallery folder (hardcoded list since we can't dynamically read directory from client-side)
-// Images will be loaded in alphabetical order
-function getGalleryImages() {
-  const images = [];
-  // Generate image paths for gallery1.webp through gallery19.webp
-  for (let i = 1; i <= 19; i++) {
-    images.push(`assets/img/gallery/gallery${i}.webp`);
+// Load gallery images from JSON file
+async function loadGalleryImages() {
+  try {
+    const response = await fetch('gallery-images.json');
+    if (!response.ok) {
+      throw new Error('Failed to load gallery images');
+    }
+    const imageFilenames = await response.json();
+    // Add path prefix to each filename
+    return imageFilenames.map(filename => `assets/img/gallery/${filename}`);
+  } catch (error) {
+    console.error('Error loading gallery images:', error);
+    return [];
   }
-  return images;
 }
 
 // Initialize gallery
-function initGallery() {
-  galleryImages = getGalleryImages();
+async function initGallery() {
+  galleryImages = await loadGalleryImages();
   
   if (galleryImages.length === 0) {
     console.warn('No gallery images found');
     return;
   }
   
-  // Load first image
-  showImage(0);
-  
-  // Create thumbnails
+  // Create thumbnails first
   createThumbnails();
+  
+  // Then load first image (this will also update thumbnails)
+  showImage(0);
   
   // Setup navigation
   setupNavigation();
@@ -81,7 +86,7 @@ function updateThumbnails() {
   thumbnails.forEach((thumb, index) => {
     if (index === currentIndex) {
       thumb.classList.add('active');
-      // Scroll thumbnail into view
+      // Scroll thumbnail into center of view
       thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     } else {
       thumb.classList.remove('active');
