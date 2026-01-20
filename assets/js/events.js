@@ -3,6 +3,82 @@
  * Loads events from events.json and dynamically renders them
  */
 
+// Auto-generate ID from title (lowercase, remove special chars, replace spaces with hyphens)
+function generateId(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+}
+
+// Parse date from dateDisplay (e.g., "So, 29.03.26, 17:00" -> ISO date)
+function parseDateFromDisplay(dateDisplay) {
+  // Extract first date if multiple dates (e.g., "Sa, 30.05.26, 19:00, So, 31.05.26, 17:00")
+  const firstDate = dateDisplay.split(',').slice(0, 3).join(',');
+  
+  // Match pattern: "DayName, DD.MM.YY, HH:MM"
+  const match = firstDate.match(/(\d{2})\.(\d{2})\.(\d{2}),?\s*(\d{2}):(\d{2})/);
+  
+  if (match) {
+    const [, day, month, year, hours, minutes] = match;
+    const fullYear = `20${year}`; // Assume 20xx century
+    // ISO format: YYYY-MM-DDTHH:MM:SS
+    return `${fullYear}-${month}-${day}T${hours}:${minutes}:00`;
+  }
+  
+  // Fallback: return current date if parsing fails
+  console.warn('Could not parse date from:', dateDisplay);
+  return new Date().toISOString();
+}
+
+// Auto-lookup image by date pattern (YY-MM-DD format in filename)
+function findImageByDate(dateDisplay, imageHint = null) {
+  // If image is explicitly provided, use it
+  if (imageHint) {
+    return `assets/img/upcoming/${imageHint}`;
+  }
+  
+  // Extract date from dateDisplay: "So, 29.03.26, 17:00" -> "26-03-29"
+  const match = dateDisplay.match(/(\d{2})\.(\d{2})\.(\d{2})/);
+  
+  if (match) {
+    const [, day, month, year] = match;
+    const datePattern = `${year}-${month}-${day}`;
+    
+    // Try common image extensions
+    const extensions = ['jpg', 'jpeg', 'png', 'webp'];
+    
+    // Return first match (you can implement actual file existence check if needed)
+    // For now, assume .jpg as default
+    return `assets/img/upcoming/${datePattern}.jpg`;
+  }
+  
+  // Fallback to a placeholder or default image
+  return 'assets/img/upcoming/placeholder.jpg';
+}
+
+// Process event to add missing fields
+function processEvent(event) {
+  // Auto-generate ID if missing
+  if (!event.id) {
+    event.id = generateId(event.title);
+  }
+  
+  // Auto-generate date from dateDisplay if missing
+  if (!event.date) {
+    event.date = parseDateFromDisplay(event.dateDisplay);
+  }
+  
+  // Auto-lookup image if missing
+  if (!event.image) {
+    event.image = findImageByDate(event.dateDisplay);
+  }
+  
+  return event;
+}
+
 // Function to create calendar event (.ics file)
 function createCalendarEvent(event) {
   const startDate = new Date(event.date);
@@ -145,7 +221,8 @@ async function loadEvents() {
     // Render upcoming events
     if (data.upcoming && data.upcoming.length > 0) {
       data.upcoming.forEach(event => {
-        container.appendChild(renderEventCard(event));
+        const processedEvent = processEvent(event);
+        container.appendChild(renderEventCard(processedEvent));
       });
       
       // Initialize navigation after cards are loaded

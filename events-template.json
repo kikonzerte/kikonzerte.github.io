@@ -1,0 +1,23 @@
+{
+  "_comment": "TEMPLATE FOR ADDING NEW EVENTS - Copy and paste the event object below",
+  "_instructions": {
+    "title": "Event title (required) - Will be auto-converted to ID",
+    "dateDisplay": "Display format (required): 'So, 29.03.26, 17:00' - Date will be auto-parsed from this",
+    "image": "Optional - If omitted, will auto-lookup by date pattern (YY-MM-DD.jpg). Just provide filename like '26-03-29.jpg'",
+    "artists": "Artist names (required)",
+    "description": "Event description (required) - Use \\n\\n for paragraph breaks",
+    "footer": "Footer info (required) - Usually pricing and registration info"
+  },
+  
+  "upcoming": [
+    {
+      "title": "Event Title Here",
+      "dateDisplay": "So, 29.03.26, 17:00",
+      "artists": "Artist Name - Instrument",
+      "description": "Event description goes here.\n\nUse double line breaks for new paragraphs.",
+      "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!"
+    }
+  ],
+  
+  "archive": []
+}
