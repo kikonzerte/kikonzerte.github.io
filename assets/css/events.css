@@ -191,12 +191,8 @@
     margin-left: 0;
   }
   
-  .event-card:first-child {
-    margin-left: var(--spacing-lg);
-  }
-  
   .event-card:last-child {
-    margin-right: var(--spacing-lg);
+    margin-right: 0;
   }
   
   .events-grid {
@@ -204,6 +200,8 @@
     justify-content: flex-start;
     scroll-padding-left: 0;
     scroll-padding-inline: 0;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
   }
   
   .event-image {
