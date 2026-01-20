@@ -114,27 +114,36 @@
 
 /* ==================== Maschinen Section ==================== */
 
+.maschinen-title {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
 .maschinen-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-2xl);
-  margin-top: var(--spacing-2xl);
+  padding-left: var(--spacing-xl);
+  padding-right: var(--spacing-xl);
 }
 
 .maschinen-item {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  align-items: center;
 }
 
 .maschinen-subtitle {
   font-family: var(--font-heading);
-  font-size: var(--font-size-xl);
-  color: var(--color-dark-blue);
+  font-size: 2rem;
+  color: var(--color-orange);
   margin: 0;
   padding-bottom: var(--spacing-xs);
   border-bottom: 3px solid var(--color-orange);
   text-transform: uppercase;
+  text-align: center;
+  width: fit-content;
 }
 
 /* Responsive video container */
@@ -143,6 +152,7 @@
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .video-container iframe {
@@ -159,6 +169,8 @@
   .maschinen-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
   }
 }
 
