@@ -3,13 +3,14 @@
    ============================================ */
 
 .site-footer {
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-ms) 0;
 }
 
 .footer-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-md);
+  padding-bottom: 50px;
 }
 
 /* ==================== Contact Section ==================== */
@@ -24,12 +25,12 @@
 }
 
 .footer-logo {
-  width: 120px;
+  width: 205px;
   height: auto;
 }
 
 .footer-contact-info h3 {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-h3);
 }
 
@@ -42,6 +43,10 @@
 
 .footer-newsletter {
   order: 1; /* On mobile, newsletter is on top */
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .newsletter-form {
@@ -50,26 +55,31 @@
   gap: var(--spacing-md);
   align-items: center;
   text-align: center;
-  padding: var(--spacing-xl) var(--spacing-md);
+  padding: var(--spacing-xl) var(--spacing-sm);
   background-color: transparent;
   border-radius: var(--border-radius-md);
+  width: 100%;
+  max-width: 100%;
 }
 
 .newsletter-form h3 {
   margin: 0;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 0;
   font-size: var(--font-size-h3);
-  white-space: nowrap;
+  /* Allow wrapping on very small screens */
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .newsletter-form p {
   margin: 0;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0;
+  max-width: 100%;
 }
 
 .form-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
@@ -119,11 +129,11 @@
 
 /* ==================== Desktop Layout ==================== */
 
-@media (min-width: 769px) {
+@media (min-width: 900px) {
   .footer-content {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-3xl);
-    align-items: center;
+    align-items: flex-start;
   }
 
   .footer-contact {
@@ -136,6 +146,16 @@
 
   .footer-contact-info {
     text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-contact-info h3 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-address {
+    margin-bottom: var(--spacing-lg);
   }
 
   .footer-newsletter {
@@ -143,13 +163,27 @@
   }
 
   .newsletter-form {
-    padding: var(--spacing-2xl) var(--spacing-xl);
+    padding: 0;
+    align-items: flex-start;
+    text-align: left;
+    gap: var(--spacing-md);
+  }
+
+  .newsletter-form h3 {
+    margin-bottom: var(--spacing-sm);
+    align-self: flex-start;
+  }
+
+  .newsletter-form p {
+    margin-bottom: var(--spacing-lg);
+    align-self: flex-start;
   }
 
   .form-container {
     flex-direction: row;
     gap: var(--spacing-sm);
     max-width: 100%;
+    align-self: flex-start;
   }
 
   .form-container input[type="email"] {
