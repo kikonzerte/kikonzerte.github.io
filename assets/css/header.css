@@ -110,7 +110,7 @@
 
 .header-nav a {
   font-family: var(--font-body);
-  font-size: var(--font-size-normal);
+  font-size: 1.05rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-dark-blue);
   text-decoration: none;

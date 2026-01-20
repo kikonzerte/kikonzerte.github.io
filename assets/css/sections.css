@@ -1,0 +1,53 @@
+/* ============================================
+   Content Sections Styles
+   ============================================ */
+
+/* ==================== About Section ==================== */
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.about-image {
+  width: 100%;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius-md);
+}
+
+.about-text h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-text p {
+  margin-bottom: var(--spacing-md);
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile: Image on top, then text */
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .about-image {
+    order: -1; /* Image first */
+  }
+  
+  .about-text {
+    order: 1; /* Text second */
+  }
+}
+
+/* ==================== Other Sections (To be added) ==================== */
