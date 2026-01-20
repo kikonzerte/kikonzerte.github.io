@@ -279,7 +279,7 @@
   margin-bottom: var(--spacing-xl);
   border-radius: var(--border-radius-sm);
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--color-black);
   display: flex;
   align-items: center;
   justify-content: center;

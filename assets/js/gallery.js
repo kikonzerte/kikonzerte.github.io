@@ -65,44 +65,67 @@ function showImage(index) {
   updateNavButtons();
 }
 
-// Create thumbnail elements
+// Create thumbnail elements with duplicates for centering
 function createThumbnails() {
   const container = document.getElementById('gallery-thumbnails');
   container.innerHTML = '';
   
-  // Show 5 thumbnails at a time (current + 2 before + 2 after, or adjust based on position)
+  const numClones = 5; // Number of images to clone on each side for centering
+  
+  // Add clones at the beginning (last images)
+  for (let i = galleryImages.length - numClones; i < galleryImages.length; i++) {
+    const thumb = document.createElement('div');
+    thumb.className = 'gallery-thumbnail gallery-thumbnail-clone';
+    thumb.innerHTML = `<img src="${galleryImages[i]}" alt="Gallery thumbnail clone" />`;
+    thumb.addEventListener('click', () => showImage(i));
+    container.appendChild(thumb);
+  }
+  
+  // Add main thumbnails
   galleryImages.forEach((imagePath, index) => {
     const thumb = document.createElement('div');
     thumb.className = 'gallery-thumbnail';
+    thumb.setAttribute('data-index', index);
     thumb.innerHTML = `<img src="${imagePath}" alt="Gallery thumbnail ${index + 1}" />`;
     thumb.addEventListener('click', () => showImage(index));
     container.appendChild(thumb);
   });
+  
+  // Add clones at the end (first images)
+  for (let i = 0; i < numClones; i++) {
+    const thumb = document.createElement('div');
+    thumb.className = 'gallery-thumbnail gallery-thumbnail-clone';
+    thumb.innerHTML = `<img src="${galleryImages[i]}" alt="Gallery thumbnail clone" />`;
+    thumb.addEventListener('click', () => showImage(i));
+    container.appendChild(thumb);
+  }
 }
 
 // Update active thumbnail
 function updateThumbnails() {
-  const thumbnails = document.querySelectorAll('.gallery-thumbnail');
-  thumbnails.forEach((thumb, index) => {
-    if (index === currentIndex) {
-      thumb.classList.add('active');
-      // Scroll thumbnail into center of view
-      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    } else {
-      thumb.classList.remove('active');
-    }
-  });
+  // Remove active class from all thumbnails
+  const allThumbnails = document.querySelectorAll('.gallery-thumbnail');
+  allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+  
+  // Find and activate the main thumbnail (not clone)
+  const mainThumbnail = document.querySelector(`.gallery-thumbnail[data-index="${currentIndex}"]`);
+  if (mainThumbnail) {
+    mainThumbnail.classList.add('active');
+    // Scroll thumbnail into center of view
+    mainThumbnail.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
 }
 
-// Update navigation button states
+// Update navigation button states (never disabled in cyclical mode)
 function updateNavButtons() {
   const prevBtn = document.getElementById('gallery-prev');
   const nextBtn = document.getElementById('gallery-next');
   
   if (!prevBtn || !nextBtn) return;
   
-  prevBtn.disabled = currentIndex === 0;
-  nextBtn.disabled = currentIndex === galleryImages.length - 1;
+  // In cyclical mode, buttons are never disabled
+  prevBtn.disabled = false;
+  nextBtn.disabled = false;
 }
 
 // Setup navigation buttons
@@ -116,17 +139,23 @@ function setupNavigation() {
   nextBtn.addEventListener('click', () => navigateNext());
 }
 
-// Navigate to previous image
+// Navigate to previous image (cyclical)
 function navigatePrevious() {
-  if (currentIndex > 0) {
-    showImage(currentIndex - 1);
+  const newIndex = currentIndex - 1;
+  if (newIndex < 0) {
+    showImage(galleryImages.length - 1); // Wrap to end
+  } else {
+    showImage(newIndex);
   }
 }
 
-// Navigate to next image
+// Navigate to next image (cyclical)
 function navigateNext() {
-  if (currentIndex < galleryImages.length - 1) {
-    showImage(currentIndex + 1);
+  const newIndex = currentIndex + 1;
+  if (newIndex >= galleryImages.length) {
+    showImage(0); // Wrap to beginning
+  } else {
+    showImage(newIndex);
   }
 }
 
