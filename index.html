@@ -180,14 +180,14 @@
     </section>
 
     <!-- Verein Section -->
-    <section id="verein" class="section preset-2">
+    <section id="verein" class="section preset-4">
       <div class="container">
         <div class="verein-content">
           <div class="verein-image">
             <img src="assets/img/verein.jpg" alt="Verein - Krienser Industrie Konzerte" />
           </div>
           <div class="verein-text">
-            <h2>VEREIN</h2>
+            <h1>VEREIN</h1>
             <p>Du möchtest Teil von KiK werden, ohne selbst im Rampenlicht zu stehen? Cool! KiK ist ein Verein mit einem zweiköpfigen Vorstand (Sharon Mazzoletti, Florian Meier) und einem Körper von Passivmitgliedern. Mit CHF 50.- pro Jahr bist du dabei und kannst dich im Verein einbringen. Statuten und Anmeldeformular stehen hier zum Download bereit:</p>
             <div class="verein-buttons">
               <a href="pdf/Vereinsstatuten-KiK.pdf" target="_blank" class="btn btn-orange">STATUTEN</a>
@@ -198,14 +198,25 @@
       </div>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="section preset-4">
-      <div class="container">
-        <h2>GALERIE</h2>
+      <div class="gallery-container">
+        <div class="gallery-main">
+          <img id="gallery-main-image" src="" alt="Gallery Image" />
+        </div>
+        <div class="gallery-thumbnails" id="gallery-thumbnails">
+          <!-- Thumbnails will be loaded dynamically -->
+        </div>
+        <div class="gallery-nav">
+          <button id="gallery-prev" class="gallery-nav-btn" aria-label="Previous">←</button>
+          <button id="gallery-next" class="gallery-nav-btn" aria-label="Next">→</button>
+        </div>
       </div>
     </section>
   </main>
 
   <script src="assets/js/header.js"></script>
   <script src="assets/js/events.js"></script>
+  <script src="assets/js/gallery.js"></script>
 </body>
 </html>
