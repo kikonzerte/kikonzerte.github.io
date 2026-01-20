@@ -19,7 +19,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
 }
 
 .about-text h2 {
@@ -28,8 +28,6 @@
 
 .about-text p {
   margin-bottom: var(--spacing-md);
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-normal);
 }
 
 .about-text p:last-child {

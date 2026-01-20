@@ -48,8 +48,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: var(--container-max-width);
-  padding: 0 var(--spacing-lg);
+  padding: 0 2vw;
 }
 
 /* Hero buttons allow line breaks */
@@ -65,7 +64,7 @@
 @media (min-width: 769px) {
   .hero-buttons {
     justify-content: space-between;
-    padding: 0 3%; /* Closer to edges for curtain positioning */
+    padding: 0 4vw; /* Closer to edges for curtain positioning */
   }
   
   .hero-btn-left {
@@ -78,9 +77,9 @@
 }
 
 /* Large screens - even closer to edges */
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .hero-buttons {
-    padding: 0 2%;
+    padding: 0 8vw;
   }
 }
 
@@ -93,21 +92,13 @@
   .hero-buttons {
     flex-direction: column;
     gap: var(--spacing-lg);
-    padding: 0 var(--spacing-md);
   }
   
   .hero-btn-left,
   .hero-btn-right {
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
     padding: var(--spacing-sm)
-  }
-}
-
-/* Tablet adjustments */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-buttons {
-    padding: 0 4%;
   }
 }
 
