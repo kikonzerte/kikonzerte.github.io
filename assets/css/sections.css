@@ -50,6 +50,64 @@
   }
 }
 
+/* ==================== Verein Section ==================== */
+
+.verein-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+.verein-image {
+  width: 100%;
+}
+
+.verein-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius-sm);
+}
+
+.verein-text h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.verein-text p {
+  margin-bottom: var(--spacing-lg);
+}
+
+.verein-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Mobile: Image on top, then text */
+@media (max-width: 768px) {
+  .verein-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .verein-image {
+    order: -1; /* Image first */
+  }
+  
+  .verein-text {
+    order: 1; /* Text second */
+  }
+  
+  .verein-buttons {
+    flex-direction: column;
+  }
+  
+  .verein-buttons .btn {
+    width: 100%;
+  }
+}
+
 /* ==================== Stage Section ==================== */
 
 .stage-content {
@@ -121,8 +179,8 @@
 
 .maschinen-title {
   text-align: center;
-  margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-ms);
+  padding-bottom: 0;
   border-bottom: 3px solid var(--color-white);
   width: fit-content;
 }
@@ -148,7 +206,7 @@
   font-size: 2rem;
   color: var(--color-white);
   margin: 0;
-  padding-bottom: var(--spacing-xs);
+  padding-bottom: 0;
   border-bottom: 3px solid var(--color-orange);
   text-transform: uppercase;
   text-align: center;
