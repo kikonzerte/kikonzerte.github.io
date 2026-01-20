@@ -1,0 +1,280 @@
+/* ============================================
+   Color Presets for Sections
+   ============================================ */
+
+/* 
+  These preset classes can be applied to sections to quickly
+  apply consistent color schemes across different parts of the site.
+  
+  Usage: <section class="preset-1">...</section>
+*/
+
+/* ==================== Preset 1 ==================== 
+   Light grey background, Orange headers, Black paragraphs, 
+   Orange buttons with white text
+*/
+
+.preset-1 {
+  background-color: var(--color-light-grey);
+  color: var(--color-black);
+}
+
+.preset-1 h1,
+.preset-1 h2,
+.preset-1 h3,
+.preset-1 h4,
+.preset-1 h5,
+.preset-1 h6 {
+  color: var(--color-orange);
+}
+
+.preset-1 p {
+  color: var(--color-black);
+}
+
+.preset-1 .btn {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border-color: var(--color-orange);
+}
+
+.preset-1 .btn:hover,
+.preset-1 .btn:focus {
+  background-color: var(--color-dark-blue);
+  border-color: var(--color-dark-blue);
+}
+
+.preset-1 a:not(.btn) {
+  color: var(--color-orange);
+}
+
+.preset-1 a:not(.btn):hover {
+  color: var(--color-dark-blue);
+}
+
+/* ==================== Preset 2 ==================== 
+   White background, Dark blue headers, Black paragraphs,
+   Orange buttons with white text
+*/
+
+.preset-2 {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.preset-2 h1,
+.preset-2 h2,
+.preset-2 h3,
+.preset-2 h4,
+.preset-2 h5,
+.preset-2 h6 {
+  color: var(--color-dark-blue);
+}
+
+.preset-2 p {
+  color: var(--color-black);
+}
+
+.preset-2 .btn {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border-color: var(--color-orange);
+}
+
+.preset-2 .btn:hover,
+.preset-2 .btn:focus {
+  background-color: var(--color-dark-blue);
+  border-color: var(--color-dark-blue);
+}
+
+.preset-2 a:not(.btn) {
+  color: var(--color-orange);
+}
+
+.preset-2 a:not(.btn):hover {
+  color: var(--color-dark-blue);
+}
+
+/* ==================== Preset 3 ==================== 
+   Dark blue background, Orange headers, White paragraphs,
+   Orange buttons with white text (inverted look)
+*/
+
+.preset-3 {
+  background-color: var(--color-dark-blue);
+  color: var(--color-white);
+}
+
+.preset-3 h1,
+.preset-3 h2,
+.preset-3 h3,
+.preset-3 h4,
+.preset-3 h5,
+.preset-3 h6 {
+  color: var(--color-orange);
+}
+
+.preset-3 p {
+  color: var(--color-white);
+}
+
+.preset-3 .btn {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border-color: var(--color-orange);
+}
+
+.preset-3 .btn:hover,
+.preset-3 .btn:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-dark-blue);
+}
+
+.preset-3 a:not(.btn) {
+  color: var(--color-orange);
+}
+
+.preset-3 a:not(.btn):hover {
+  color: var(--color-white);
+}
+
+/* ==================== Preset 4 ==================== 
+   Black background, Orange headers, Light grey paragraphs,
+   Orange buttons with white text (dramatic look)
+*/
+
+.preset-4 {
+  background-color: var(--color-black);
+  color: var(--color-light-grey);
+}
+
+.preset-4 h1,
+.preset-4 h2,
+.preset-4 h3,
+.preset-4 h4,
+.preset-4 h5,
+.preset-4 h6 {
+  color: var(--color-orange);
+}
+
+.preset-4 p {
+  color: var(--color-light-grey);
+}
+
+.preset-4 .btn {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border-color: var(--color-orange);
+}
+
+.preset-4 .btn:hover,
+.preset-4 .btn:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.preset-4 a:not(.btn) {
+  color: var(--color-orange);
+}
+
+.preset-4 a:not(.btn):hover {
+  color: var(--color-light-grey);
+}
+
+/* ==================== Preset 5 ==================== 
+   Orange background, White headers, Dark blue paragraphs,
+   Dark blue buttons with white text (bold look)
+*/
+
+.preset-5 {
+  background-color: var(--color-orange);
+  color: var(--color-dark-blue);
+}
+
+.preset-5 h1,
+.preset-5 h2,
+.preset-5 h3,
+.preset-5 h4,
+.preset-5 h5,
+.preset-5 h6 {
+  color: var(--color-white);
+}
+
+.preset-5 p {
+  color: var(--color-dark-blue);
+}
+
+.preset-5 .btn {
+  background-color: var(--color-dark-blue);
+  color: var(--color-white);
+  border-color: var(--color-dark-blue);
+}
+
+.preset-5 .btn:hover,
+.preset-5 .btn:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-dark-blue);
+}
+
+.preset-5 a:not(.btn) {
+  color: var(--color-dark-blue);
+}
+
+.preset-5 a:not(.btn):hover {
+  color: var(--color-white);
+}
+
+/* ==================== Special Cards in Presets ==================== */
+
+/* Make concert cards adapt to preset backgrounds */
+.preset-3 .concert-card,
+.preset-4 .concert-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left-color: var(--color-orange);
+}
+
+.preset-3 .concert-card-title,
+.preset-4 .concert-card-title {
+  color: var(--color-orange);
+}
+
+.preset-3 .concert-card-date,
+.preset-4 .concert-card-date {
+  color: var(--color-light-grey);
+}
+
+.preset-3 .concert-card-description,
+.preset-4 .concert-card-description {
+  color: var(--color-white);
+}
+
+/* ==================== Preset Utilities ==================== */
+
+/* Override heading color within a preset */
+.heading-white {
+  color: var(--color-white) !important;
+}
+
+.heading-orange {
+  color: var(--color-orange) !important;
+}
+
+.heading-blue {
+  color: var(--color-dark-blue) !important;
+}
+
+/* Override paragraph color within a preset */
+.text-preset-white {
+  color: var(--color-white) !important;
+}
+
+.text-preset-grey {
+  color: var(--color-light-grey) !important;
+}
+
+.text-preset-black {
+  color: var(--color-black) !important;
+}

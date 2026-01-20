@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Demo - Krienser Industrie Konzerte</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    .demo-section {
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+      border-bottom: 2px solid #ccc;
+    }
+    .demo-title {
+      background: #f5f5f5;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1.5rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header style="text-align: center; padding: 3rem 0;">
+      <h1>Krienser Industrie Konzerte</h1>
+      <p class="lead">CSS Foundation Demo</p>
+    </header>
+
+    <!-- Typography Demo -->
+    <section class="demo-section">
+      <div class="demo-title">TYPOGRAPHY</div>
+      <h1>Heading 1 - QuarryDigger Font</h1>
+      <h2>Heading 2 - QuarryDigger Font</h2>
+      <h3>Heading 3 - QuarryDigger Font</h3>
+      <h4>Heading 4 - QuarryDigger Font</h4>
+      <h5>Heading 5 - QuarryDigger Font</h5>
+      <h6>Heading 6 - QuarryDigger Font</h6>
+      
+      <p class="lead">This is a lead paragraph with larger text. It's perfect for introductions and important messages.</p>
+      
+      <p>This is a regular paragraph using Courier New. Die Krienser Industrie Konzerte wurden 2021 von Sharon Mazzoletti und Florian Meier ins Leben gerufen. Beide selbst Musizierende, wollten wir das Potenzial unseres Raumes nutzen.</p>
+      
+      <p class="text-small">This is small text, useful for footnotes or secondary information.</p>
+    </section>
+
+    <!-- Buttons Demo -->
+    <section class="demo-section">
+      <div class="demo-title">BUTTONS</div>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+        <button class="btn btn-orange">Orange Button</button>
+        <button class="btn btn-orange-outline">Orange Outline</button>
+        <button class="btn btn-blue">Blue Button</button>
+        <button class="btn btn-white">White Button</button>
+      </div>
+      
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+        <button class="btn btn-orange btn-sm">Small Button</button>
+        <button class="btn btn-orange">Normal Button</button>
+        <button class="btn btn-orange btn-lg">Large Button</button>
+      </div>
+      
+      <button class="btn btn-orange btn-block">Full Width Button</button>
+    </section>
+
+    <!-- Concert Card Demo -->
+    <section class="demo-section">
+      <div class="demo-title">CONCERT CARD</div>
+      <div class="concert-card">
+        <h3 class="concert-card-title">UN:VERBUNDEN</h3>
+        <div class="concert-card-date">So, 22.02.26, 17:00</div>
+        <div class="concert-card-artists">Elena Schneider – Mezzosopran, Paula Soriano Ibáñez – Saxofon</div>
+        <p class="concert-card-description">
+          Mit seinem ersten Projekt UN:VERBUNDEN widmet sich das neu gegründete Duo «Luft-Linien» dem Thema Distanz.
+        </p>
+        <a href="mailto:info@kikonzerte.ch" class="btn btn-orange">Anmelden</a>
+      </div>
+    </section>
+
+    <!-- Color Presets Demo -->
+    <section class="demo-section" style="border: none;">
+      <div class="demo-title">COLOR PRESETS</div>
+      
+      <!-- Preset 1: Light grey bg, Orange headers, Black text, Orange buttons -->
+      <section class="preset-1 section">
+        <div class="container">
+          <h2>Preset 1: Light Grey Background</h2>
+          <p>Light grey background, Orange headers, Black paragraphs, Orange buttons with white text.</p>
+          <button class="btn">Test Button</button>
+        </div>
+      </section>
+
+      <!-- Preset 2: White bg, Dark blue headers, Black text, Orange buttons -->
+      <section class="preset-2 section">
+        <div class="container">
+          <h2>Preset 2: White Background</h2>
+          <p>White background, Dark blue headers, Black paragraphs, Orange buttons with white text.</p>
+          <button class="btn">Test Button</button>
+        </div>
+      </section>
+
+      <!-- Preset 3: Dark blue bg, Orange headers, White text, Orange buttons -->
+      <section class="preset-3 section">
+        <div class="container">
+          <h2>Preset 3: Dark Blue Background</h2>
+          <p>Dark blue background, Orange headers, White paragraphs, Orange buttons with white text.</p>
+          <button class="btn">Test Button</button>
+          
+          <div class="concert-card">
+            <h3 class="concert-card-title">Concert Example</h3>
+            <div class="concert-card-date">So, 22.02.26, 17:00</div>
+            <p class="concert-card-description">This shows how concert cards look on dark backgrounds.</p>
+            <a href="#" class="btn btn-orange">Anmelden</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Preset 4: Black bg, Orange headers, Light grey text, Orange buttons -->
+      <section class="preset-4 section">
+        <div class="container">
+          <h2>Preset 4: Black Background</h2>
+          <p>Black background, Orange headers, Light grey paragraphs, Orange buttons with white text.</p>
+          <button class="btn">Test Button</button>
+        </div>
+      </section>
+
+      <!-- Preset 5: Orange bg, White headers, Dark blue text, Dark blue buttons -->
+      <section class="preset-5 section">
+        <div class="container">
+          <h2>Preset 5: Orange Background</h2>
+          <p>Orange background, White headers, Dark blue paragraphs, Dark blue buttons with white text.</p>
+          <button class="btn">Test Button</button>
+        </div>
+      </section>
+    </section>
+
+    <!-- Grid Demo -->
+    <section class="demo-section">
+      <div class="demo-title">GRID LAYOUT</div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h4 class="card-title">Card 1</h4>
+          <div class="card-content">
+            <p>This is a card component with responsive grid layout.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Card 2</h4>
+          <div class="card-content">
+            <p>Cards automatically adjust to screen size.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Card 3</h4>
+          <div class="card-content">
+            <p>Perfect for concert listings or gallery items.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

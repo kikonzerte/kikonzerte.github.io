@@ -1,0 +1,203 @@
+/* ============================================
+   Typography
+   ============================================ */
+
+/* Font Face Declarations */
+@font-face {
+  font-family: 'QuarryDigger';
+  src: url('../fonts/QuarryDigger-Regular.woff2') format('woff2'),
+       url('../fonts/QuarryDigger-Regular.woff') format('woff'),
+       url('../fonts/QuarryDigger-Regular.ttf') format('truetype'),
+       url('../fonts/QuarryDigger-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==================== Base Typography ==================== */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-black);
+}
+
+/* ==================== Headings ==================== */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-orange);
+}
+
+h1, .h1 {
+  font-size: var(--font-size-h1);
+  margin-bottom: var(--spacing-lg);
+}
+
+h2, .h2 {
+  font-size: var(--font-size-h2);
+  margin-bottom: var(--spacing-lg);
+}
+
+h3, .h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4, .h4 {
+  font-size: var(--font-size-h4);
+}
+
+h5, .h5 {
+  font-size: var(--font-size-h5);
+}
+
+h6, .h6 {
+  font-size: var(--font-size-h6);
+}
+
+/* ==================== Paragraphs ==================== */
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--font-size-normal);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-black);
+}
+
+/* Lead paragraph - larger text for introductions */
+.lead {
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Small text */
+.text-small {
+  font-size: var(--font-size-small);
+}
+
+/* ==================== Text Utilities ==================== */
+
+/* Text alignment */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Text colors */
+.text-white {
+  color: var(--color-white);
+}
+
+.text-grey {
+  color: var(--color-light-grey);
+}
+
+.text-orange {
+  color: var(--color-orange);
+}
+
+.text-blue {
+  color: var(--color-dark-blue);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+/* Font weights */
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Text transforms */
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+/* ==================== Links ==================== */
+
+a {
+  color: var(--color-orange);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-dark-blue);
+}
+
+/* Remove underline for links in navigation or specific contexts */
+.nav-link,
+.link-clean {
+  text-decoration: none;
+}
+
+.link-clean:hover {
+  text-decoration: underline;
+}
+
+/* ==================== Lists ==================== */
+
+ul, ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+}
+
+li {
+  margin-bottom: var(--spacing-xs);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Unstyled list */
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-unstyled li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ==================== Responsive Typography ==================== */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  p {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .lead {
+    font-size: var(--font-size-medium);
+  }
+}

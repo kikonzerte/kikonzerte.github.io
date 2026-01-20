@@ -1,0 +1,83 @@
+/* ============================================
+   CSS Custom Properties (Variables)
+   ============================================ */
+
+:root {
+  /* ==================== Colors ==================== */
+  --color-white: #FFFFFF;
+  --color-light-grey: #DEDEDE;
+  --color-orange: #FF8600;
+  --color-dark-blue: #002060;
+  --color-black: #212020;
+
+  /* ==================== Typography ==================== */
+  --font-heading: 'QuarryDigger', 'Arial Black', sans-serif;
+  --font-body: 'Courier New', Courier, monospace;
+
+  /* Font Sizes - Fluid Typography */
+  --font-size-base: 16px;
+  --font-size-small: 0.875rem;    /* 14px */
+  --font-size-normal: 1rem;        /* 16px */
+  --font-size-medium: 1.125rem;    /* 18px */
+  --font-size-large: 1.25rem;      /* 20px */
+  
+  /* Headings */
+  --font-size-h1: clamp(2rem, 5vw, 3.5rem);      /* 32-56px */
+  --font-size-h2: clamp(1.75rem, 4vw, 2.75rem);  /* 28-44px */
+  --font-size-h3: clamp(1.5rem, 3vw, 2.25rem);   /* 24-36px */
+  --font-size-h4: clamp(1.25rem, 2.5vw, 1.75rem);/* 20-28px */
+  --font-size-h5: clamp(1.125rem, 2vw, 1.5rem);  /* 18-24px */
+  --font-size-h6: clamp(1rem, 1.5vw, 1.25rem);   /* 16-20px */
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* ==================== Spacing ==================== */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-2xl: 4rem;     /* 64px */
+  --spacing-3xl: 6rem;     /* 96px */
+
+  /* ==================== Layout ==================== */
+  --container-max-width: 1200px;
+  --container-padding: var(--spacing-md);
+  
+  /* Breakpoints (used in media queries) */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  /* ==================== Borders & Radius ==================== */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-width: 2px;
+
+  /* ==================== Transitions ==================== */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+
+  /* ==================== Shadows ==================== */
+  --shadow-sm: 0 2px 4px rgba(33, 32, 32, 0.1);
+  --shadow-md: 0 4px 8px rgba(33, 32, 32, 0.15);
+  --shadow-lg: 0 8px 16px rgba(33, 32, 32, 0.2);
+
+  /* ==================== Z-Index Scale ==================== */
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-fixed: 300;
+  --z-index-modal-backdrop: 400;
+  --z-index-modal: 500;
+  --z-index-toast: 600;
+}
