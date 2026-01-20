@@ -35,13 +35,13 @@
 .preset-1 .btn {
   background-color: var(--color-orange);
   color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
 }
 
 .preset-1 .btn:hover,
 .preset-1 .btn:focus {
   background-color: var(--color-dark-blue);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
 }
 
 .preset-1 a:not(.btn) {
@@ -78,13 +78,13 @@
 .preset-2 .btn {
   background-color: var(--color-orange);
   color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
 }
 
 .preset-2 .btn:hover,
 .preset-2 .btn:focus {
   background-color: var(--color-dark-blue);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
 }
 
 .preset-2 a:not(.btn) {
@@ -121,13 +121,13 @@
 .preset-3 .btn {
   background-color: var(--color-orange);
   color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
 }
 
 .preset-3 .btn:hover,
 .preset-3 .btn:focus {
   background-color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
   color: var(--color-dark-blue);
 }
 
@@ -165,13 +165,13 @@
 .preset-4 .btn {
   background-color: var(--color-orange);
   color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
 }
 
 .preset-4 .btn:hover,
 .preset-4 .btn:focus {
   background-color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
   color: var(--color-black);
 }
 
@@ -209,13 +209,13 @@
 .preset-5 .btn {
   background-color: var(--color-dark-blue);
   color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
 }
 
 .preset-5 .btn:hover,
 .preset-5 .btn:focus {
   background-color: var(--color-white);
-  border: 3px solid var(--color-white);
+  border: var(--btn-border-width) solid var(--color-white);
   color: var(--color-dark-blue);
 }
 

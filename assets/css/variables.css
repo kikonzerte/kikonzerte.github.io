@@ -62,6 +62,7 @@
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --border-width: 2px;
+  --btn-border-width: 1px;
 
   /* ==================== Transitions ==================== */
   --transition-fast: 150ms ease-in-out;
