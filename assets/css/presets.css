@@ -195,7 +195,7 @@
 .preset-5 h4,
 .preset-5 h5,
 .preset-5 h6 {
-  color: var(--color-dark-blue);
+  color: var(--color-black);
 }
 
 .preset-5 p {
@@ -203,7 +203,7 @@
 }
 
 .preset-5 .btn {
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-black);
   color: var(--color-white);
   border: var(--btn-border-width) solid var(--color-white);
 }
@@ -243,6 +243,11 @@
 
 .preset-3 .concert-card-description,
 .preset-4 .concert-card-description {
+  color: var(--color-white);
+}
+
+/* Maschinen section in preset-3: Override h2 to be white instead of orange */
+.preset-3 .maschinen-subtitle {
   color: var(--color-white);
 }
 
