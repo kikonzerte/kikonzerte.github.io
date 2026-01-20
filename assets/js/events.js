@@ -34,12 +34,7 @@ function parseDateFromDisplay(dateDisplay) {
 }
 
 // Auto-lookup image by date pattern (YY-MM-DD format in filename)
-function findImageByDate(dateDisplay, imageHint = null) {
-  // If image is explicitly provided, use it
-  if (imageHint) {
-    return `assets/img/upcoming/${imageHint}`;
-  }
-  
+function findImageByDate(dateDisplay) {
   // Extract date from dateDisplay: "So, 29.03.26, 17:00" -> "26-03-29"
   const match = dateDisplay.match(/(\d{2})\.(\d{2})\.(\d{2})/);
   
@@ -47,15 +42,14 @@ function findImageByDate(dateDisplay, imageHint = null) {
     const [, day, month, year] = match;
     const datePattern = `${year}-${month}-${day}`;
     
-    // Try common image extensions
-    const extensions = ['jpg', 'jpeg', 'png', 'webp'];
-    
-    // Return first match (you can implement actual file existence check if needed)
-    // For now, assume .jpg as default
+    // Return with .jpg as default extension
+    // Browser will try to load it, and if it fails, will show broken image
+    // In the future, we could implement a check for .png, .jpeg, etc.
     return `assets/img/upcoming/${datePattern}.jpg`;
   }
   
   // Fallback to a placeholder or default image
+  console.warn('Could not extract date from:', dateDisplay);
   return 'assets/img/upcoming/placeholder.jpg';
 }
 
@@ -71,10 +65,15 @@ function processEvent(event) {
     event.date = parseDateFromDisplay(event.dateDisplay);
   }
   
-  // Auto-lookup image if missing
+  // Process image path
   if (!event.image) {
+    // No image provided - auto-lookup by date
     event.image = findImageByDate(event.dateDisplay);
+  } else if (!event.image.includes('/')) {
+    // Image is just a filename - add path prefix
+    event.image = `assets/img/upcoming/${event.image}`;
   }
+  // else: image already has full path, use as-is
   
   return event;
 }
