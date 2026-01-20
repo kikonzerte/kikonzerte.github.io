@@ -111,7 +111,7 @@ function createCalendarEvent(event) {
 
 // Function to create email mailto link
 function createEmailLink(event) {
-  const subject = encodeURIComponent(`Anmeldung: ${event.title} - ${event.dateDisplay}`);
+  const subject = encodeURIComponent(`Anmeldung KiK: ${event.title} - ${event.dateDisplay}`);
   const body = encodeURIComponent(`Hallo,\n\nich möchte mich für folgendes Konzert anmelden:\n\n${event.title}\n${event.dateDisplay}\n\nViele Grüsse`);
   return `mailto:info@kikonzerte.ch?subject=${subject}&body=${body}`;
 }

@@ -22,7 +22,7 @@
   --font-size-large: 1.25rem;      /* 20px */
   
   /* Headings */
-  --font-size-h1: clamp(2rem, 5vw, 3.5rem);      /* 32-56px */
+  --font-size-h1: clamp(2.5rem, 5vw, 4rem);      /* 32-56px */
   --font-size-h2: clamp(1.75rem, 4vw, 2.75rem);  /* 28-44px */
   --font-size-h3: clamp(1.5rem, 3vw, 2.25rem);   /* 24-36px */
   --font-size-h4: clamp(1.25rem, 2.5vw, 1.75rem);/* 20-28px */
@@ -66,8 +66,8 @@
 
   /* ==================== Transitions ==================== */
   --transition-fast: 10ms ease-in-out;
-  --transition-normal: 100ms ease-in-out;
-  --transition-slow: 250ms ease-in-out;
+  --transition-normal: 200ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
 
   /* ==================== Shadows ==================== */
   --shadow-sm: 0 2px 4px rgba(33, 32, 32, 0.1);

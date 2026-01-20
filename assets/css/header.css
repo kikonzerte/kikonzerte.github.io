@@ -225,7 +225,7 @@
 @media (max-width: 768px) {
 
   .site-header {
-    height: clamp(50px, 7vh, 80px);
+    height: clamp(70px, 8vh, 90px);
   }
   .header-overlay {
     padding: var(--spacing-sm) var(--spacing-md);

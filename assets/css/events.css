@@ -183,7 +183,7 @@
 /* Mobile: Full width cards */
 @media (max-width: 768px) {
   .event-card {
-    width: calc(100vw - var(--spacing-lg) * 2);
+    width: calc(100vw - var(--spacing-sm) * 2);
     max-width: none;
     min-width: auto;
     min-height: 800px;
