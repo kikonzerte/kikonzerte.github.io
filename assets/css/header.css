@@ -9,10 +9,11 @@
   right: 0;
   z-index: var(--z-index-fixed);
   background-image: url('../img/header.jpg');
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center top;
   background-repeat: no-repeat;
   transition: transform var(--transition-normal), opacity var(--transition-normal);
+  height: clamp(70px, 10vh, 120px);
 }
 
 /* Header is hidden by default when scrolling down */
@@ -30,8 +31,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-md) var(--spacing-lg);
-  min-height: 100px;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  height: 100%;
   position: relative;
 }
 
@@ -64,7 +65,7 @@
 
 .header-logo {
   display: block;
-  max-width: 550px;
+  max-width: 700px;
   width: 100%;
 }
 
@@ -106,7 +107,7 @@
 
 .header-nav a {
   font-family: var(--font-body);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-normal);
   font-weight: var(--font-weight-bold);
   color: var(--color-dark-blue);
   text-decoration: none;
@@ -124,7 +125,7 @@
 
 .header-contact-btn {
   font-size: var(--font-size-small);
-  padding: var(--spacing-xs) var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-lg);
 }
 
 /* ==================== Mobile Menu ==================== */
@@ -207,7 +208,7 @@
   }
   
   .header-logo {
-    max-width: 300px;
+    max-width: 400px;
   }
   
   .social-icon {
@@ -224,7 +225,6 @@
 @media (max-width: 768px) {
   .header-overlay {
     padding: var(--spacing-sm) var(--spacing-md);
-    min-height: 80px;
   }
 
   /* Hide desktop navigation and social icons */
@@ -246,7 +246,7 @@
   }
 
   .header-logo {
-    max-width: 250px;
+    max-width: 350px;
   }
 
   .header-right {
@@ -256,11 +256,10 @@
 
 @media (max-width: 480px) {
   .header-overlay {
-    padding: var(--spacing-sm);
-    min-height: 70px;
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
 
   .header-logo {
-    max-width: 200px;
+    max-width: 280px;
   }
 }
