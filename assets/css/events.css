@@ -18,11 +18,10 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding-bottom: var(--spacing-md);
-  padding-left: var(--spacing-lg);
-  padding-right: var(--spacing-md);
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   justify-content: flex-start;
+  scroll-padding-left: var(--spacing-lg);
 }
 
 /* Center cards when they all fit on screen */
@@ -56,6 +55,11 @@
   height: auto;
   min-height: 950px;
   scroll-snap-align: start;
+  margin-left: var(--spacing-lg);
+}
+
+.event-card:last-child {
+  margin-right: var(--spacing-lg);
 }
 
 .event-image {
@@ -176,13 +180,14 @@
     max-width: none;
     min-width: auto;
     min-height: 800px;
+    scroll-snap-align: center;
   }
   
   .events-grid {
     gap: var(--spacing-md);
-    padding-left: var(--spacing-lg);
-    padding-right: var(--spacing-lg);
     justify-content: flex-start;
+    scroll-padding-left: 0;
+    scroll-padding-inline: calc(50vw - (100vw - var(--spacing-lg) * 2) / 2);
   }
   
   .event-image {
