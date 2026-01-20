@@ -64,7 +64,7 @@
 
 .header-logo {
   display: block;
-  max-width: 400px;
+  max-width: 550px;
   width: 100%;
 }
 
@@ -112,6 +112,7 @@
   text-decoration: none;
   transition: color var(--transition-fast);
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .header-nav a:hover,
@@ -241,7 +242,7 @@
   /* Adjust header layout for mobile */
   .header-center {
     flex: 1;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .header-logo {
