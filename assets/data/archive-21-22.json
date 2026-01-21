@@ -1,0 +1,46 @@
+{
+  "season": "21/22",
+  "displayName": "KONZERTARCHIV SPIELZEIT 21/22",
+  "concerts": [
+    {
+      "date": "19.06.2022",
+      "title": "Trio Bruch",
+      "subtitle": "Fabian Tschopp - Flöte, Diana Tobler - Violine, Sharon Mazzoletti - Klavier",
+      "image": "assets/img/archive/21-22/22-06-19.jpg"
+    },
+    {
+      "date": "20.03.2022",
+      "title": "Klavierrezital Jeannine Läuffer",
+      "image": "assets/img/archive/21-22/22-03-20.jpg"
+    },
+    {
+      "date": "20.02.2022",
+      "title": "Winterreise & Drinks",
+      "subtitle": "Ricardo Acosta - Klavier, Arion Rudari - Bariton",
+      "image": "assets/img/archive/21-22/22-02-20.jpg"
+    },
+    {
+      "date": "12.02.2022",
+      "title": "Brahms-Trio",
+      "subtitle": "Diana Tobler - Violine, David Pfistner - Cello, Sharon Mazzoletti - Klavier",
+      "image": "assets/img/archive/21-22/22-02-12.jpg"
+    },
+    {
+      "date": "23.01.2022",
+      "title": "Trio Momo",
+      "image": "assets/img/archive/21-22/22-01-23.jpg"
+    },
+    {
+      "date": "05.12.2021",
+      "title": "Dichterliebe und Davidsbündler",
+      "subtitle": "Sharon Mazzoletti - Klavier, Alban Müller - Bariton",
+      "image": "assets/img/archive/21-22/21-12-05.jpg"
+    },
+    {
+      "date": "21.11.2021",
+      "title": "Kleiderbügelkonzert",
+      "image": "assets/img/archive/21-22/21-11-21.jpg"
+    }
+  ],
+  "specialEvents": []
+}

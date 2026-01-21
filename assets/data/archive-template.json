@@ -1,0 +1,42 @@
+{
+  "_comment": "TEMPLATE FOR ADDING NEW ARCHIVE SEASONS - Copy and rename this file",
+  "_instructions": {
+    "season": "Season identifier (e.g., '25/26')",
+    "displayName": "Display name for the season (e.g., 'KONZERTARCHIV SPIELZEIT 25/26')",
+    "concerts": "Array of regular concerts",
+    "concert_fields": {
+      "date": "Date in format DD.MM.YYYY (e.g., '30.11.2025')",
+      "title": "Concert title or artist name (e.g., 'Balter')",
+      "image": "Path to concert image (e.g., 'assets/img/archive/25-26/balter.jpg')"
+    },
+    "specialEvents": "Array of special event sections (optional)",
+    "specialEvent_fields": {
+      "title": "Section title (e.g., 'JUBILÄUMS-FESTIVAL')",
+      "concerts": "Array of concerts within this special event",
+      "concert_subtitle": "Optional subtitle for concerts (e.g., 'Trio Varga')"
+    }
+  },
+  
+  "season": "XX/XX",
+  "displayName": "KONZERTARCHIV SPIELZEIT XX/XX",
+  "concerts": [
+    {
+      "date": "30.11.2025",
+      "title": "Artist Name or Concert Title",
+      "image": "assets/img/archive/XX-XX/concert-name.jpg"
+    }
+  ],
+  "specialEvents": [
+    {
+      "title": "SPECIAL EVENT TITLE",
+      "concerts": [
+        {
+          "date": "26.11.2023",
+          "title": "Concert Title",
+          "subtitle": "Optional Subtitle",
+          "image": "assets/img/archive/XX-XX/special-concert.jpg"
+        }
+      ]
+    }
+  ]
+}

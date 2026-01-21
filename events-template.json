@@ -2,7 +2,8 @@
   "_comment": "TEMPLATE FOR ADDING NEW EVENTS - Copy and paste the event object below",
   "_instructions": {
     "title": "Event title (required) - Will be auto-converted to ID",
-    "dateDisplay": "Display format (required): 'So, 29.03.26, 17:00' - Date will be auto-parsed from this",
+    "date": "Single date format (required): 'So, 29.03.26, 17:00' - Use this for events with one date",
+    "dates": "Multiple dates format (optional): ['So, 31.05.26, 17:00', 'Sa, 30.06.26, 17:00'] - Use this for events with multiple dates instead of 'date'",
     "image": "Full image path (required): 'assets/img/upcoming/26-03-29.jpg'",
     "artists": "Artist names (required)",
     "description": "Event description (required) - Use \\n\\n for paragraph breaks",
@@ -12,11 +13,22 @@
   "upcoming": [
     {
       "title": "Event Title Here",
-      "dateDisplay": "So, 29.03.26, 17:00",
+      "date": "So, 29.03.26, 17:00",
       "image": "assets/img/upcoming/26-03-29.jpg",
       "artists": "Artist Name - Instrument",
       "description": "Event description goes here.\n\nUse double line breaks for new paragraphs.",
       "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!"
+    },
+    {
+      "title": "Event with Multiple Dates",
+      "dates": [
+        "So, 31.05.26, 17:00",
+        "Sa, 30.06.26, 17:00"
+      ],
+      "image": "assets/img/upcoming/26-05-31.jpg",
+      "artists": "Artist Name - Instrument",
+      "description": "Event description goes here.\n\nUse double line breaks for new paragraphs.",
+      "footer": "Eintritt 50 | 30 CHF inkl. Finger Food und Getränke.\n\nAnmeldung obligatorisch, bitte Datum wählen."
     }
   ],
   

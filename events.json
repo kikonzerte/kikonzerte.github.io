@@ -2,7 +2,7 @@
   "upcoming": [
     {
       "title": "UN:VERBUNDEN",
-      "dateDisplay": "Mi, 26.02.26, 17:00",
+      "date": "Mi, 26.02.26, 17:00",
       "image": "assets/img/upcoming/26-02-26.jpg",
       "artists": "Elena Schneider- Mezzosopran, Paula Soriano Ibáñez - Saxofon",
       "description": "Mit seinem ersten Projekt UN:VERBUNDEN widmet sich das neu gegründete Duo «Luft-Linien» dem Thema Distanz. Die Distanz zu anderen Menschen und Orten und das daraus resultierende Gefühl von Unverbundenheit. Es geht aber auch um die Brücken, die von Erinnerungen aufrechterhalten werden, um die genannte Distanz teilweise zu überwinden.\n\nMit verschiedenen zeitgenössischen Kompositionen, unter anderem mit einer Uraufführung und einer für das Duo angepassten Komposition, sowie mit textbasierten Improvisationsfragmenten, widmen sich die beiden Musikerinnen der klanglichen Verschmelzung in dieser selten gehörten Kombination von Stimme und Saxofon.",
@@ -10,7 +10,7 @@
     },
     {
       "title": "Blitze und ihre Folgen",
-      "dateDisplay": "So, 29.03.26, 17:00",
+      "date": "So, 29.03.26, 17:00",
       "image": "assets/img/upcoming/26-03-29.png",
       "artists": "Trio III-VII-XII: Mischa Käser, Daniel Studer, Urs Haenggli",
       "description": "Geistesblitze, Experimente mit ganz kurzen musikalischen Gedanken und Gesten: Das sind die Auslöser der instrumentalen, vokalen und theatralischen Reaktionen und Interaktionen der seit 25 Jahren eingespielten Meister der Improvisation. Neben spontanen Improvisationen und Konzeptstücken bringt das Trio III-VII-XII die in enger Zusammenarbeit mit Ursina Maria Braun und Roland Moser erarbeiteten Werke zur Aufführung.",
@@ -18,7 +18,7 @@
     },
     {
       "title": "Feuerfalter",
-      "dateDisplay": "So, 26.04.26, 17:00",
+      "date": "So, 26.04.26, 17:00",
       "image": "assets/img/upcoming/26-04-26.jpeg",
       "artists": "Despina Corazza - Gesang, Lukas DeRungs - Piano",
       "description": "Sanft schimmernd und voller Kraft: Wie ein Feuerfalter, der seine farbenprächtigen Flügel entfaltet, entsteht Musik in lebendigen, intensiven Tönen.\n\nSeit ihrem Musikstudium in Luzern verbindet Lukas DeRungs und Despina Corazza eine langjährige Freundschaft. \"Einfach schöne Musik machen und genießen\" war die Devise, als sie 2024 beschlossen, im Duo zusammen Musik zu machen. Doch wenn zwei experimentierfreudige Geister aufeinander treffen entsteht mehr: Ein musikalischer Tanz am Rande der Regeln, ein freudiges Neuentdecken des Bekannten in tiefem Respekt vor den ausgewählten Kompositionen.\n\nJazz/Pop - Covers und Eigenkompositionen. www.despinacorazza.ch/feuerfalter",
@@ -26,7 +26,10 @@
     },
     {
       "title": "liminal space",
-      "dateDisplay": "So, 31.05.26, 17:00",
+      "dates": [
+        "Sa, 30.06.26, 17:00",
+        "So, 31.05.26, 17:00"        
+      ],
       "image": "assets/img/upcoming/26-05-31.jpg",
       "artists": "Sharon Mazzoletti - Klavier",
       "description": "Wie ein Möbelstück soll Musik sein, findet Erik Satie: den Raum verschönern, ohne ihn gänzlich einzunehmen.\n\nIn diesem Geist lädt Sharon Mazzoletti (Klavier) zu einem Konzert, bei dem die Gäste sich im Raum hinsetzen oder bewegen können, wie sie das wollen, Cocktails schlürfen und Snacks essen, während sie den Raum möbliert.\n\nMit Werken von Erik Satie, Marie Awadis, Nadia Boulanger und Philip Glass.",

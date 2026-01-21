@@ -1,0 +1,30 @@
+{
+  "currentSeason": "25-26",
+  "seasons": [
+    {
+      "id": "25-26",
+      "displayName": "SPIELZEIT 25/26",
+      "file": "assets/data/archive-25-26.json"
+    },
+    {
+      "id": "24-25",
+      "displayName": "SPIELZEIT 24/25",
+      "file": "assets/data/archive-24-25.json"
+    },
+    {
+      "id": "23-24",
+      "displayName": "SPIELZEIT 23/24",
+      "file": "assets/data/archive-23-24.json"
+    },
+    {
+      "id": "22-23",
+      "displayName": "SPIELZEIT 22/23",
+      "file": "assets/data/archive-22-23.json"
+    },
+    {
+      "id": "21-22",
+      "displayName": "SPIELZEIT 21/22",
+      "file": "assets/data/archive-21-22.json"
+    }
+  ]
+}

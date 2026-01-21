@@ -1,0 +1,62 @@
+{
+  "season": "22/23",
+  "displayName": "KONZERTARCHIV SPIELZEIT 22/23",
+  "concerts": [
+    {
+      "date": "02.07.2023",
+      "title": "Duo TohuWaBohu",
+      "image": "assets/img/archive/22-23/23-07-02.jpg"
+    },
+    {
+      "date": "21.05.2023",
+      "title": "Duo Die Da",
+      "image": "assets/img/archive/22-23/23-05-21.jpg"
+    },
+    {
+      "date": "14.05.2023",
+      "title": "Flötenquartett Divertis",
+      "image": "assets/img/archive/22-23/23-05-14.jpg"
+    },
+    {
+      "date": "30.04.2023",
+      "title": "Lucerne Guitar Duo",
+      "image": "assets/img/archive/22-23/23-04-30.jpg"
+    },
+    {
+      "date": "02.04.2023",
+      "title": "Wer ist niemand?",
+      "image": "assets/img/archive/22-23/23-04-02.jpg"
+    },
+    {
+      "date": "19.03.2023",
+      "title": "Liedduo Müller & Mazzoletti",
+      "image": "assets/img/archive/22-23/23-03-19.jpg"
+    },
+    {
+      "date": "08.01.2023",
+      "title": "Ana Dorado und Freunde",
+      "image": "assets/img/archive/22-23/23-01-08.jpg"
+    },
+    {
+      "date": "11.12.2022",
+      "title": "Klavierrezital Vincenzo Furio",
+      "image": "assets/img/archive/22-23/22-12-11.jpg"
+    },
+    {
+      "date": "27.11.2022",
+      "title": "Gitarrenrezital Henrik Dewes",
+      "image": "assets/img/archive/22-23/22-11-27.jpg"
+    },
+    {
+      "date": "15.10.2022",
+      "title": "Amoroso Quartett",
+      "image": "assets/img/archive/22-23/22-10-15.jpg"
+    },
+    {
+      "date": "09.10.2022",
+      "title": "Gitarrenrezital Amrit Beran",
+      "image": "assets/img/archive/22-23/22-10-09.jpg"
+    }
+  ],
+  "specialEvents": []
+}

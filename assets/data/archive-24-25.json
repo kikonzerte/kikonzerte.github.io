@@ -1,0 +1,54 @@
+{
+  "season": "24/25",
+  "displayName": "KONZERTARCHIV SPIELZEIT 24/25",
+  "concerts": [
+    {
+      "date": "29.06.2025",
+      "title": "Mélodies d'ailleurs",
+      "subtitle": "Viviane Hasler, Maren Gamper",
+      "image": "assets/img/archive/24-25/25-06-29.jpg"
+    },
+    {
+      "date": "25.05.2025",
+      "title": "Duo Die Da",
+      "image": "assets/img/archive/24-25/25-05-25.jpg"
+    },
+    {
+      "date": "27.04.2025",
+      "title": "Primavera Obscura",
+      "subtitle": "Samira Holer, Guo Zhi Tang",
+      "image": "assets/img/archive/24-25/25-04-27.jpg"
+    },
+    {
+      "date": "30.03.2025",
+      "title": "Duo 51 B.C.",
+      "image": "assets/img/archive/24-25/25-03-30.jpg"
+    },
+    {
+      "date": "23.02.2025",
+      "title": "Trio MaMaRe",
+      "image": "assets/img/archive/24-25/25-02-23.jpg"
+    },
+    {
+      "date": "26.01.2025",
+      "title": "Trio Note à Note",
+      "image": "assets/img/archive/24-25/25-01-26.jpg"
+    },
+    {
+      "date": "24.11.2024",
+      "title": "Trio KOKON",
+      "image": "assets/img/archive/24-25/24-11-24.jpg"
+    },
+    {
+      "date": "27.10.2024",
+      "title": "Duo Müller-Mazzoletti",
+      "image": "assets/img/archive/24-25/24-10-27.jpg"
+    },
+    {
+      "date": "29.09.2024",
+      "title": "Ensemble Nymphea",
+      "image": "assets/img/archive/24-25/24-09-29.jpg"
+    }
+  ],
+  "specialEvents": []
+}

@@ -180,8 +180,9 @@
 
 .maschinen-title {
   text-align: center;
+  font-size: 4.5rem;
   margin-bottom: var(--spacing-ms);
-  padding-bottom: 0;
+  padding-bottom: 0px;
   border-bottom: 3px solid var(--color-white);
   width: fit-content;
 }
@@ -204,7 +205,7 @@
 
 .maschinen-subtitle {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--color-white);
   margin: 0;
   padding-bottom: 0;

@@ -1,0 +1,242 @@
+/* ============================================
+   Archive Styles
+   ============================================ */
+
+/* Archive Container */
+.archive-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.loading-message {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-white);
+}
+
+/* Season Title */
+.archive-season-title {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  font-size: 3rem;
+  color: var(--color-white) !important;
+  border-bottom: 3px solid var(--color-orange);
+  padding-top: 60px; /* Account for fixed header */
+}
+
+/* Concert Item - Base Styles */
+.archive-concert {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+  padding: var(--spacing-lg) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.archive-concert:last-child {
+  border-bottom: none;
+}
+
+/* Concert Image */
+.archive-concert-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Concert Info Container */
+.archive-concert-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Concert Date - h1 */
+.archive-concert-date {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: var(--color-orange);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Concert Title - large paragraph */
+.archive-concert-title {
+  font-size: 1.5rem;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Concert Subtitle (for special events) */
+.archive-concert-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-light-grey);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Alternating Layout - Desktop */
+/* Even items: image left, text right */
+.archive-concert:nth-child(even) .archive-concert-image-wrapper {
+  order: 1;
+}
+
+.archive-concert:nth-child(even) .archive-concert-info {
+  order: 2;
+}
+
+/* Odd items: text left, image right */
+.archive-concert:nth-child(odd) .archive-concert-image-wrapper {
+  order: 2;
+}
+
+.archive-concert:nth-child(odd) .archive-concert-info {
+  order: 1;
+}
+
+/* Special Event Section */
+.archive-special-section {
+  background-color: #333;
+  border-left: 5px solid var(--color-orange);
+  border-right: 5px solid var(--color-orange);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Special Event Title */
+.archive-special-section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-orange);
+  text-align: center;
+  margin: 0 0 var(--spacing-lg) 0;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-orange);
+}
+
+/* Special event concerts inside section */
+.archive-special-section .archive-concert {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--spacing-lg) 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+.archive-special-section .archive-concert:last-child {
+  border-bottom: none;
+}
+
+/* Season Navigation */
+.archive-season-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.archive-season-link {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: transparent;
+  color: var(--color-white);
+  text-decoration: none;
+  border: 2px solid var(--color-white);
+  border-radius: var(--border-radius-sm);
+  font-weight: bold;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-normal);
+}
+
+.archive-season-link:hover {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+.archive-season-link.active {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+  color: var(--color-white) !important;
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .archive-concert {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+  }
+
+  /* Mobile: Always image first, then info */
+  .archive-concert:nth-child(even) .archive-concert-image-wrapper,
+  .archive-concert:nth-child(odd) .archive-concert-image-wrapper {
+    order: 1;
+  }
+
+  .archive-concert:nth-child(even) .archive-concert-info,
+  .archive-concert:nth-child(odd) .archive-concert-info {
+    order: 2;
+  }
+
+  .archive-concert-date {
+    font-size: 2rem;
+  }
+
+  .archive-concert-title {
+    font-size: 1.25rem;
+  }
+
+  .archive-concert-subtitle {
+    font-size: 1rem;
+  }
+
+  .archive-season-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    padding-top: 50px; /* Smaller padding for mobile */
+  }
+
+  .archive-special-section {
+    padding: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .archive-special-section-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .archive-season-nav {
+    gap: var(--spacing-sm);
+  }
+
+  .archive-season-link {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .archive-concert-date {
+    font-size: 2rem;
+  }
+
+  .archive-concert-title {
+    font-size: 1.25rem;
+  }
+}

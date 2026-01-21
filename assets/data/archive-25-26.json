@@ -1,0 +1,22 @@
+{
+  "season": "25/26",
+  "displayName": "KONZERTARCHIV SPIELZEIT 25/26",
+  "concerts": [
+    {
+      "date": "30.11.2025",
+      "title": "Balter",
+      "image": "assets/img/archive/25-26/25-11-30.jpg"
+    },
+    {
+      "date": "08.11.2025",
+      "title": "Begabtenförderung Musikschulen Obwalden",
+      "image": "assets/img/archive/25-26/25-11-08.jpg"
+    },
+    {
+      "date": "26.10.2025",
+      "title": "Quatuor Amoroso",
+      "image": "assets/img/archive/25-26/25-10-26.jpg"
+    }
+  ],
+  "specialEvents": []
+}

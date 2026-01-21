@@ -1,0 +1,96 @@
+{
+  "season": "23/24",
+  "displayName": "KONZERTARCHIV SPIELZEIT 23/24",
+  "concerts": [
+    {
+      "date": "30.06.2024",
+      "title": "Corde Profonde",
+      "image": "assets/img/archive/23-24/24-06-30.jpg"
+    },
+    {
+      "date": "26.05.2024",
+      "title": "Mashaw",
+      "image": "assets/img/archive/23-24/24-05-26.jpg"
+    },
+    {
+      "date": "28.04.2024",
+      "title": "Duo Linda & Carlo",
+      "image": "assets/img/archive/23-24/24-04-28.jpg"
+    },
+    {
+      "date": "24.03.2024",
+      "title": "Duo Delara",
+      "image": "assets/img/archive/23-24/24-03-24.jpg"
+    },
+    {
+      "date": "25.02.2024",
+      "title": "Duo Colette & Camilla",
+      "image": "assets/img/archive/23-24/24-02-25.jpg"
+    },
+    {
+      "date": "28.01.2024",
+      "title": "Bosco Trio",
+      "image": "assets/img/archive/23-24/24-01-28.jpg"
+    },
+    {
+      "date": "28./29.10.2023",
+      "title": "Kulinarische Préludes",
+      "image": "assets/img/archive/23-24/23-10-29.jpg"
+    },
+    {
+      "date": "15.10.2023",
+      "title": "Quatuor Amoroso",
+      "image": "assets/img/archive/23-24/23-10-15.jpg"
+    },
+    {
+      "date": "24.09.2023",
+      "title": "Ton im Bild - Transformation",
+      "image": "assets/img/archive/23-24/23-09-24.jpg"
+    },
+    {
+      "date": "10.09.2023",
+      "title": "Retelling Undine",
+      "subtitle": "Duo Ignea & Freyja Melsted",
+      "image": "assets/img/archive/23-24/23-09-10.jpg"
+    }
+  ],
+  "specialEvents": [
+    {
+      "title": "JUBILÄUMS-FESTIVAL",
+      "concerts": [
+        {
+          "date": "26.11.2023",
+          "title": "Abschlusskonzert",
+          "subtitle": "Trio Varga",
+          "image": "assets/img/archive/23-24/23-11-26.jpg"
+        },
+        {
+          "date": "26.11.2023",
+          "title": "Nachwuchskonzert",
+          "image": "assets/img/archive/23-24/23-11-26.png"
+        },
+        {
+          "date": "25.11.2023",
+          "title": "Poetry Slam",
+          "image": "assets/img/archive/23-24/23-11-25-3.jpg"
+        },
+        {
+          "date": "25.11.2023",
+          "title": "Mitmachkonzert",
+          "image": "assets/img/archive/23-24/23-11-25-2.jpg"
+        },
+        {
+          "date": "25.11.2023",
+          "title": "Vorstandskonzert",
+          "image": "assets/img/archive/23-24/23-11-25.jpg"
+        },
+        {
+          "date": "24.11.2023",
+          "title": "Eröffnungskonzert",
+          "subtitle": "Duo JÄÄS",
+          "image": "assets/img/archive/23-24/23-11-24.jpg"
+        }
+      ]
+    }
+  ]
+}
