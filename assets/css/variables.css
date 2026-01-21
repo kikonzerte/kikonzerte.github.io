@@ -48,7 +48,7 @@
   --spacing-3xl: 6rem;     /* 96px */
 
   /* ==================== Layout ==================== */
-  --container-max-width: 1200px;
+  --container-max-width: 1600px;
   --container-padding: var(--spacing-md);
   
   /* Breakpoints (used in media queries) */
