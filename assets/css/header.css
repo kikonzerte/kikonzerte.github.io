@@ -13,7 +13,7 @@
   background-position: center top;
   background-repeat: no-repeat;
   transition: transform var(--transition-normal), opacity var(--transition-normal);
-  height: clamp(80px, 9vh, 200px);
+  height: clamp(90px, 8vw, 150px);
 }
 
 /* Header is hidden by default when scrolling down */

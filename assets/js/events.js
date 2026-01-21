@@ -33,25 +33,6 @@ function parseDate(dateString) {
   return new Date().toISOString();
 }
 
-// Auto-lookup image by date pattern (YY-MM-DD format in filename)
-function findImageByDate(dateString) {
-  // Extract date from date string: "So, 29.03.26, 17:00" -> "26-03-29"
-  const match = dateString.match(/(\d{2})\.(\d{2})\.(\d{2})/);
-  
-  if (match) {
-    const [, day, month, year] = match;
-    const datePattern = `${year}-${month}-${day}`;
-    
-    // Return with .jpg as default extension
-    // Browser will try to load it, and if it fails, will show broken image
-    // In the future, we could implement a check for .png, .jpeg, etc.
-    return `assets/img/upcoming/${datePattern}.jpg`;
-  }
-  
-  // Fallback to a placeholder or default image
-  console.warn('Could not extract date from:', dateString);
-  return 'assets/img/upcoming/placeholder.jpg';
-}
 
 // Process event to add missing fields
 function processEvent(event) {
@@ -79,9 +60,6 @@ function processEvent(event) {
       iso: event.dateISO
     }];
   }
-  
-  // Image is required - no auto-lookup
-  // Just ensure it's provided in the JSON
   
   return event;
 }
@@ -133,13 +111,11 @@ function createCalendarEvent(event, dateObj = null) {
 function createEmailLink(event, selectedDate = null) {
   const dateText = selectedDate || event.dateString;
   const subject = encodeURIComponent(`Anmeldung KiK: ${event.title} - ${dateText}`);
-  const body = encodeURIComponent(`Hallo,\n\nich möchte mich für folgendes Konzert anmelden:\n\n${event.title}\n${dateText}\n\nViele Grüsse`);
-  return `mailto:info@kikonzerte.ch?subject=${subject}&body=${body}`;
+  return `mailto:info@kikonzerte.ch?subject=${subject}`;
 }
 
 // Function to create and show date selection modal
 function showDateModal(event) {
-  // Create modal if it doesn't exist
   let modal = document.getElementById('date-selection-modal');
   if (!modal) {
     modal = document.createElement('div');

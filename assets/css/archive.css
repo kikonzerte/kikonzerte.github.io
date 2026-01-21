@@ -24,7 +24,7 @@
   font-size: 3rem;
   color: var(--color-white) !important;
   border-bottom: 3px solid var(--color-orange);
-  padding-top: 60px; /* Account for fixed header */
+  padding-top: clamp(50px, 5vw, 110px); /* Account for fixed header */
 }
 
 /* Concert Item - Base Styles */
@@ -193,7 +193,7 @@
   }
 
   .archive-concert-date {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .archive-concert-title {
@@ -233,7 +233,7 @@
 /* Tablet adjustments */
 @media (min-width: 769px) and (max-width: 1024px) {
   .archive-concert-date {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .archive-concert-title {
