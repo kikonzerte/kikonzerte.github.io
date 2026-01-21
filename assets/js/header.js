@@ -122,10 +122,12 @@
     const mobileNavLinks = mobileNav.querySelectorAll('a');
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
         // If it's an anchor link, use smooth scroll
-        if (this.getAttribute('href').startsWith('#')) {
+        if (href && href.startsWith('#')) {
           smoothScroll(e);
         } else {
+          // For external links or email links, just close the menu
           closeMobileMenu();
         }
       });
