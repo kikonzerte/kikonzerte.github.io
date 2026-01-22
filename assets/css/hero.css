@@ -6,14 +6,13 @@
   position: relative;
   width: 100%;
   height: clamp(500px, 60vw, 100vh);
-  min-height: 500px; /* Minimum height to accommodate stacked buttons on mobile */
+  min-height: 500px; 
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Hero Image */
 .hero-image {
   position: absolute;
   top: 0;
@@ -30,7 +29,6 @@
   object-position: center;
 }
 
-/* Hero Content */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -41,7 +39,6 @@
   justify-content: center;
 }
 
-/* Hero Buttons Container */
 .hero-buttons {
   display: flex;
   gap: var(--spacing-2xl);
@@ -51,7 +48,6 @@
   padding: 0 2vw;
 }
 
-/* Hero buttons allow line breaks */
 .hero-btn-left,
 .hero-btn-right {
   white-space: normal;
@@ -60,9 +56,7 @@
   border-radius: 30px;
 }
 
-
-
-/* Desktop: Buttons on left and right (over curtains) */
+/* Desktop */
 @media (min-width: 769px) {
   .btn-lg {
     font-size: clamp(1.2rem, 1.6vw, 8rem);
@@ -71,11 +65,11 @@
     
   .hero-buttons {
     justify-content: space-between;
-    padding: 0 3vw; /* Closer to edges for curtain positioning */
+    padding: 0 3vw;
   }
 }
 
-/* Large screens - even closer to edges */
+/* Large screens */
 @media (min-width: 1400px) {
   .hero-buttons {
     padding: 0 5vw;
@@ -83,11 +77,11 @@
 }
 
 
-/* Mobile: Buttons stacked vertically */
+/* Mobile */
 @media (max-width: 768px) {
   .hero {
     height: 80vh;
-    min-height: 600px; /* Increased minimum for stacked buttons */
+    min-height: 600px;
   }
 
   .hero-image img {

@@ -2,22 +2,11 @@
 
 This directory contains JSON files for the concert archive system.
 
-## Current Status
-
-**Total Seasons:** 5 (21/22 through 25/26)
-**Total Concerts:** 46 concerts across all seasons
-- Season 25/26: 3 concerts
-- Season 24/25: 9 concerts  
-- Season 23/24: 16 concerts (10 regular + 6 in Jubiläums-Festival)
-- Season 22/23: 11 concerts
-- Season 21/22: 7 concerts
-
 ## File Structure
 
 - `archive-seasons.json` - Master file listing all available seasons
 - `archive-XX-XX.json` - Individual season files (e.g., `archive-25-26.json`)
 - `archive-template.json` - Template for creating new season files
-- `README.md` - This file
 
 ## Adding a New Season
 
@@ -32,19 +21,10 @@ This directory contains JSON files for the concert archive system.
 
 3. **Add images:**
    - Create directory: `assets/img/archive/XX-XX/`
-   - Add concert images with naming format: `YY-MM-DD.jpg` (e.g., `26-10-15.jpg`)
+   - Add concert images with naming format: `YY-MM-DD.jpg`
 
 4. **Deploy:**
-   - That's it! The page will automatically load the new season.
-
-## Image Naming Convention
-
-Images should be named using the date format: `YY-MM-DD.jpg`
-
-Examples:
-- `25-11-30.jpg` → Concert on November 30, 2025
-- `24-09-29.jpg` → Concert on September 29, 2024
-- `23-11-25-2.jpg` → Second concert on November 25, 2023 (use suffixes for multiple events on same day)
+   - The page will automatically load the new season.
 
 ## JSON Structure
 
@@ -88,17 +68,8 @@ Examples:
 
 ## Notes
 
-- Dates should be in format: `DD.MM.YYYY`
 - For multi-day events, use format: `DD./DD.MM.YYYY` (e.g., `28./29.10.2023`)
 - Images should be organized by season in subdirectories
 - Special events appear with dark grey background (#333) and orange borders
 - Concerts are displayed newest first (reverse chronological order)
 - The subtitle field is optional and appears in italics below the title
-
-## Maintenance Tips
-
-- Keep image file sizes reasonable (< 500KB recommended)
-- Use consistent image dimensions where possible
-- JPG format is preferred for photos
-- PNG is acceptable for images with transparency or text
-- Always validate JSON syntax after editing (use a JSON validator)

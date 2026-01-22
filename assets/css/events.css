@@ -9,7 +9,7 @@
 
 }
 
-/* Event Grid Layout - Horizontal Scroll */
+/* Event Grid Layout */
 .events-grid {
   display: flex;
   overflow-x: auto;
@@ -24,7 +24,7 @@
   scroll-padding-left: var(--spacing-lg);
 }
 
-/* Center cards when they all fit on screen - dynamically applied */
+/* Center cards when they all fit on screen */
 .events-grid.cards-fit {
   justify-content: center;
 }
@@ -39,7 +39,7 @@
   padding: var(--spacing-xl);
 }
 
-/* Event Card - Tall and Narrow, Fixed Height */
+/* Event Card */
 .event-card {
   background-color: var(--color-black);
   border-radius: var(--border-radius-md);
@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: calc((100vw - var(--spacing-md) * 3.33) / 2.33); /* About 2.33 cards visible */
+  width: calc((100vw - var(--spacing-md) * 3.33) / 2.33);
   max-width: 550px;
   min-width: 350px;
   height: auto;
@@ -62,7 +62,7 @@
 
 .event-image {
   width: 100%;
-  height:fit-content
+  height:fit-content;
   object-fit: cover;
   flex-shrink: 0;
 }

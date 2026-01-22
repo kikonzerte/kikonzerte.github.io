@@ -26,7 +26,6 @@
   transform: translateY(0);
 }
 
-/* Header Overlay Container */
 .header-overlay {
   display: flex;
   align-items: center;
@@ -282,6 +281,7 @@
 
   .header-nav a {
   font-size: clamp(1.2rem, 1.5vw, 3rem);
+  }
 }
 
 @media (max-width: 992px) {
@@ -325,7 +325,6 @@
     display: flex;
   }
 
-  /* Adjust header layout for mobile */
   .header-center {
     flex: 1;
     align-items: center;

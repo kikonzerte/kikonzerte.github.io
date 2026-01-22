@@ -68,7 +68,7 @@ p {
   color: var(--color-black);
 }
 
-/* Lead paragraph - larger text for introductions */
+/* Lead paragraph */
 .lead {
   font-size: var(--font-size-large);
   line-height: var(--line-height-normal);

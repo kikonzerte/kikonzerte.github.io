@@ -24,10 +24,10 @@
   font-size: 3rem;
   color: var(--color-white) !important;
   border-bottom: 3px solid var(--color-orange);
-  padding-top: clamp(50px, 5vw, 110px); /* Account for fixed header */
+  padding-top: clamp(50px, 5vw, 110px);
 }
 
-/* Concert Item - Base Styles */
+/* Concert Item */
 .archive-concert {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -68,7 +68,7 @@
   line-height: 1.2;
 }
 
-/* Concert Title - large paragraph */
+/* Concert Title */
 .archive-concert-title {
   font-size: 1.5rem;
   color: var(--color-white);
@@ -76,7 +76,7 @@
   line-height: 1.4;
 }
 
-/* Concert Subtitle (for special events) */
+/* Concert Subtitle */
 .archive-concert-subtitle {
   font-size: 1.25rem;
   color: var(--color-light-grey);
@@ -207,7 +207,7 @@
   .archive-season-title {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-lg);
-    padding-top: 50px; /* Smaller padding for mobile */
+    padding-top: 50px;
   }
 
   .archive-special-section {
