@@ -12,7 +12,7 @@ let touchEndX = 0;
 // Load gallery images from JSON file
 async function loadGalleryImages() {
   try {
-    const response = await fetch('gallery-images.json');
+    const response = await fetch('assets/data/gallery-images.json');
     if (!response.ok) {
       throw new Error('Failed to load gallery images');
     }

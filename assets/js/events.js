@@ -1,6 +1,6 @@
 /**
  * Events loader and renderer for Krienser Industrie Konzerte
- * Loads events from events.json and dynamically renders them
+ * Loads events from assets/data/events.json and dynamically renders them
  */
 
 // Auto-generate ID from title (lowercase, remove special chars, replace spaces with hyphens)
@@ -345,7 +345,7 @@ async function loadEvents() {
   const container = document.getElementById('events-container');
   
   try {
-    const response = await fetch('events.json');
+    const response = await fetch('assets/data/events.json');
     if (!response.ok) {
       throw new Error('Failed to load events');
     }
