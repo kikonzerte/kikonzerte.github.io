@@ -44,3 +44,9 @@ build/
 *.psd
 *.ai
 *.sketch
+
+# Flyer Generator
+# Keep latest versions, ignore timestamped backups and temp files
+assets/flyer/generated/flyer-20*.pdf
+assets/flyer/generated/flyer-20*.jpg
+assets/flyer/generated/temp-*

@@ -1,0 +1,185 @@
+/* Font Face Declaration */
+@font-face {
+  font-family: 'QuarryDigger';
+  src: url('../../fonts/QuarryDigger-Regular.otf') format('opentype'),
+       url('../../fonts/QuarryDigger-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+/* Variables matching website */
+:root {
+  --color-white: #FFFFFF;
+  --color-orange: #FF8600;
+  --color-dark-blue: #002060;
+  --color-black: #212020;
+  --color-dark-gray: #3a3a3a;
+  
+  --font-heading: 'QuarryDigger', 'Arial Black', sans-serif;
+  --font-body: 'Courier New', Courier, monospace;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  overflow: auto;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #ffffff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+/* Flyer Container - Fixed A5 at 300 DPI (1754 x 2480px) - NO RESPONSIVE BEHAVIOR */
+.flyer-container {
+  width: 1754px;
+  min-width: 1754px;
+  max-width: 1754px;
+  height: 2480px;
+  min-height: 2480px;
+  max-height: 2480px;
+  background: var(--color-dark-blue);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transform: scale(0.5);
+  transform-origin: top center;
+  flex-shrink: 0;
+}
+
+/* Events Section - Fixed dimensions */
+#events-section {
+  padding: 60px 60px;
+  background: var(--color-dark-blue);
+  width: 1754px;
+  box-sizing: border-box;
+}
+
+/* Single Event Block - Fixed dimensions */
+.event-block {
+  background: var(--color-dark-gray);
+  margin-bottom: 40px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  height: 600px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-block:last-child {
+  margin-bottom: 0;
+}
+
+/* Event Content (Left Side) */
+.event-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white);
+  min-width: 0; /* Allow flex shrinking */
+}
+
+.event-title {
+  font-family: var(--font-heading);
+  font-size: 66px;
+  color: var(--color-orange);
+  margin: 0 0 20px 0;
+  line-height: 1.1;
+  text-transform: none;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.event-date {
+  font-family: var(--font-body);
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--color-white);
+  margin: 0 0 15px 0;
+  border-bottom: 3px solid var(--color-white);
+  display: inline-block;
+  max-width: fit-content;
+  white-space: nowrap;
+}
+
+.event-description {
+  font-family: var(--font-body);
+  font-size: 42px;
+  line-height: 1.25;
+  color: var(--color-white);
+  margin: 8px 0 0 0;
+  flex: 1;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Bold text in description */
+.event-description strong {
+  font-weight: bold;
+}
+
+/* Event Image (Right Side) - Size defined by event-block padding */
+.event-image {
+  width: 750px;
+  height: 100%; /* Fill height of event-block minus padding */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Bottom Section - Fixed size matching flyerbottom.png */
+.flyer-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1754px;
+  height: 478px;
+}
+
+.flyer-bottom img {
+  width: 1754px;
+  height: 478px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Print styles */
+@media print {
+  @page {
+    size: 148mm 210mm;
+    margin: 0;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-dark-blue);
+    display: block;
+    min-height: auto;
+  }
+  
+  .flyer-container {
+    width: 148mm;
+    height: 210mm;
+    transform: none;
+    box-shadow: none;
+  }
+}

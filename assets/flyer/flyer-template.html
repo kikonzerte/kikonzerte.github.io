@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>KiK Flyer</title>
+  <link rel="stylesheet" href="flyer-styles.css">
+  <style>
+    /* Export mode - full size, no scaling */
+    body.export-mode {
+      background: var(--color-dark-blue);
+      padding: 0;
+      display: block;
+      min-height: auto;
+    }
+    
+    body.export-mode .flyer-container {
+      transform: none;
+      box-shadow: none;
+    }
+  </style>
+  <script>
+    // Detect if opened directly in browser vs export
+    if (window.location.search.includes('export=true')) {
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('export-mode');
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="flyer-container">
+    <!-- Events Section -->
+    <div id="events-section">
+      <!-- UN:VERBUNDEN -->
+      <div class="event-block">
+        <div class="event-content">
+          <h2 class="event-title">UN:VERBUNDEN</h2>
+          <div class="event-date">So, 22.02.26, 17:00</div>
+          <div class="event-description">Elena Schneider und Paula Soriano Ibáñez erforschen als Duo «Luft-Linien» Distanz und Verbundenheit mit zeitgenössischen Kompositionen für Stimme und Saxofon.</div>
+        </div>
+        <img src="../img/upcoming/26-02-26.webp" alt="UN:VERBUNDEN" class="event-image" />
+      </div>
+
+      <!-- Blitze und ihre Folgen -->
+      <div class="event-block">
+        <div class="event-content">
+          <h2 class="event-title">Blitze und ihre Folgen</h2>
+          <div class="event-date">So, 29.03.26, 17:00</div>
+          <div class="event-description">Neben Improvisationen und Konzeptstücken bringt das Trio III-VII-XII in Zusammenarbeit mit Ursina Maria Braun und Roland Moser erarbeitete Werke zur Aufführung.</div>
+        </div>
+        <img src="../img/upcoming/26-03-29.png" alt="Blitze und ihre Folgen" class="event-image" />
+      </div>
+
+      <!-- Feuerfalter -->
+      <div class="event-block">
+        <div class="event-content">
+          <h2 class="event-title">Feuerfalter</h2>
+          <div class="event-date">So, 26.04.26, 17:00</div>
+          <div class="event-description">Despina Corazza und Lukas DeRungs verbinden langjährige Freundschaft mit musikalischem Experiment. Jazz/Pop-Covers und Eigenkompositionen.</div>
+        </div>
+        <img src="../img/upcoming/26-04-26.webp" alt="Feuerfalter" class="event-image" />
+      </div>
+    </div>
+    
+    <!-- Bottom Section -->
+    <div class="flyer-bottom">
+      <img src="flyerbottom.png" alt="Contact Information" />
+    </div>
+  </div>
+</body>
+</html>
