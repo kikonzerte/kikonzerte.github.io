@@ -2,6 +2,12 @@
   "season": "25/26",
   "displayName": "KONZERTARCHIV SPIELZEIT 25/26",
   "concerts": [
+        {
+      "date": "22.02.2026",
+      "title": "Duo Luft-Linien",
+      "subtitle": "UN:VERBUNDEN",
+      "image": "assets/img/archive/25-26/26-02-22.webp"
+    },
     {
       "date": "30.11.2025",
       "title": "Balter",
@@ -16,12 +22,6 @@
       "date": "26.10.2025",
       "title": "Quatuor Amoroso",
       "image": "assets/img/archive/25-26/25-10-26.webp"
-    },
-    {
-      "date": "22.02.2026",
-      "title": "Duo Luft-Linien",
-      "subtitle": "UN:VERBUNDEN",
-      "image": "assets/img/archive/25-26/26-02-22.webp"
     }
 
 
