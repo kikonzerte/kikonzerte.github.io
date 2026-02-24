@@ -27,12 +27,28 @@
       "description": "Wie ein Möbelstück soll Musik sein, findet Erik Satie: den Raum verschönern, ohne ihn gänzlich einzunehmen.\n\nIn diesem Geist lädt Sharon Mazzoletti (Klavier) zu einem Konzert, bei dem die Gäste sich im Raum hinsetzen oder bewegen können, wie sie das wollen, Cocktails schlürfen und Snacks essen, während sie den Raum möbliert.\n\nMit Werken von Erik Satie, Marie Awadis, Nadia Boulanger und Philip Glass.",
       "footer": "Eintritt 50 | 30 CHF inkl. Finger Food und Getränke.\n\nAnmeldung obligatorisch, bitte Datum wählen."
     },
-        {
+    {
+      "title": "Magd & Knecht",
+      "date": "So, 27.09.26, 17:00",
+      "image": "assets/img/upcoming/26-09-27.webp",
+      "artists": "Magdalena Zwahlen – Flöte\nJulia Frischknecht – Sopran",
+      "description": "Das Duo Magd & Knecht erkundet mit der ungewöhnlichen Kombination ihrer Instrumente neue musikalische Welten und verknüpft mit viel Leichtigkeit Neues mit Altbekanntem. Dabei treffen Volkslieder auf performative zeitgenössische Musik, klassische Musik wird neu interpretiert und das Ganze mit einer guten Prise Charme und Schalk präsentiert.",
+      "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!"
+    },
+    {
       "title": "Lauter Luisen – Katertage",
       "date": "So, 25.10.26, 17:00",
       "image": "assets/img/upcoming/26-10-25.webp",
       "artists": "Katrin Wüthrich – Akkordeon & Stimme\nShirley Hofmann – Blasinstrumente & Stimme\nKarin Schulthess – Perkussion & Stimme",
       "description": "Für ihr drittes Bühnenprogramm haben Lauter Luisen überraschendes literarisches Material vertont - moderne Lyrik von Kurt Marti, Hilde Domin und Rose Ausländer sowie spielerische Anagramme von Schweizer Autor*innen wie Anna Isenschmid und Heini Gut. Die Texte berühren und driften ins Absurde, die Instrumente antworten behäbig und mit Schalk; das gesprochene Wort fügt sich perfekt in die unkonventionelle Besetzung ein.",
+      "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!"
+    },
+     {
+      "title": "Duo Giannoni-Suflyan – Ungehörte Frauen",
+      "date": "So, 29.11.26, 17:00",
+      "image": "assets/img/upcoming/26-11-29.webp",
+      "artists": "Serafina Giannoni – Sopran\nTsovinar Suflyan – Klavier",
+      "description": "In den Salons des 19. Jahrhunderts durften Frauen spielen, singen, musizieren – aber nur selten komponieren. Trotzdem erhoben einige ihre Stimme und schufen Lieder, die zwischen Zartheit und innerer Glut leuchten. Sie erzählen von Sehnsucht und Traum, von Liebe, Zweifel und Selbstbehauptung – Spiegel eines Lebens im Spannungsfeld zwischen Gefühl und Gesellschaft. Dieses Projekt lässt die Musik von Komponistinnen wie Fanny Mendelssohn, Pauline Viardot, Rebecca Clarke und zahlreichen anderen erklingen: Ein Dialog über Zeit und Raum hinweg – eine Feier der weiblichen Stimme, die sich ihren Platz in der Welt komponiert.",
       "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!"
     }
   ],
