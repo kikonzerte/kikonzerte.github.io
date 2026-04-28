@@ -4,7 +4,7 @@
       "title": "liminal space",
       "dates": [
         "Sa, 30.05.26, 19:00",
-        "So, 31.05.26, 17:00"        
+        "So, 31.05.26, 17:00"
       ],
       "image": "assets/img/upcoming/26-05-31.webp",
       "artists": "Sharon Mazzoletti - Klavier",
@@ -27,13 +27,21 @@
       "description": "Für ihr drittes Bühnenprogramm haben Lauter Luisen überraschendes literarisches Material vertont - moderne Lyrik von Kurt Marti, Hilde Domin und Rose Ausländer sowie spielerische Anagramme von Schweizer Autor*innen wie Anna Isenschmid und Heini Gut. Die Texte berühren und driften ins Absurde, die Instrumente antworten behäbig und mit Schalk; das gesprochene Wort fügt sich perfekt in die unkonventionelle Besetzung ein.",
       "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!"
     },
-     {
+    {
       "title": "Duo Giannoni-Suflyan – Ungehörte Frauen",
       "date": "So, 29.11.26, 17:00",
       "image": "assets/img/upcoming/26-11-29.webp",
       "artists": "Serafina Giannoni – Sopran\nTsovinar Suflyan – Klavier",
       "description": "In den Salons des 19. Jahrhunderts durften Frauen spielen, singen, musizieren – aber nur selten komponieren. Trotzdem erhoben einige ihre Stimme und schufen Lieder, die zwischen Zartheit und innerer Glut leuchten. Sie erzählen von Sehnsucht und Traum, von Liebe, Zweifel und Selbstbehauptung – Spiegel eines Lebens im Spannungsfeld zwischen Gefühl und Gesellschaft. Dieses Projekt lässt die Musik von Komponistinnen wie Fanny Mendelssohn, Pauline Viardot, Rebecca Clarke und zahlreichen anderen erklingen: Ein Dialog über Zeit und Raum hinweg – eine Feier der weiblichen Stimme, die sich ihren Platz in der Welt komponiert.",
       "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!"
+    },
+    {
+      "title": "Trio Buffington, Dubrovina und Negrini - Kontraste",
+      "image": "assets/img/upcoming/27-01-31.webp",
+      "artists": "Lindsay Buffington – Harfe\nValentina Dubrovin – Violoncello\nFrancesco Negrini – Klarinette",
+      "description": "Das Trio mit der aussergewöhnlichen Besetzung von Harfe, Violoncello und Klarinette spielt ein abwechslungsreiches Programm mit viel Groove, Tanz, Volksmusik, Klezmer, Romantik und noch einiges mehr. Die drei unterschiedlichen Instrumente verschmelzen zu einem Klangkörper, der absolut einzigartig klingt. \n\nMit Werken von Sergej Prokofiev, Sergei Rachmaninow, Béla Kovács, Svante Henryson, George Gershwin, Gilad Cohen, u.a.",
+      "footer": "Eintritt frei – Kollekte.\n\nAnmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!",
+      "date": "So, 31.01.27, 17:00"
     }
   ],
   "archive": []
