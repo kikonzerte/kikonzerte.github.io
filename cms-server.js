@@ -278,8 +278,10 @@ async function handleDeleteEvent(req, res) {
   if (eventIndex < 0 || eventIndex >= events.upcoming.length) {
     return json(res, { ok: false, error: 'Invalid event index' }, 400);
   }
+  const imagePath = path.join(ROOT, events.upcoming[eventIndex].image);
   events.upcoming.splice(eventIndex, 1);
   writeJson(eventsPath, events);
+  if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
   json(res, { ok: true });
 }
 
@@ -292,8 +294,10 @@ async function handleDeleteArchiveEntry(req, res) {
   if (concertIndex < 0 || concertIndex >= archiveData.concerts.length) {
     return json(res, { ok: false, error: 'Invalid concert index' }, 400);
   }
+  const imagePath = path.join(ROOT, archiveData.concerts[concertIndex].image);
   archiveData.concerts.splice(concertIndex, 1);
   writeJson(archivePath, archiveData);
+  if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
   json(res, { ok: true });
 }
 
