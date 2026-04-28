@@ -270,6 +270,33 @@ async function handleUpdateArchiveEntry(req, res) {
   json(res, { ok: true, imagePath: newImagePath });
 }
 
+async function handleDeleteEvent(req, res) {
+  const { eventIndex } = await readBody(req);
+  if (eventIndex == null) return json(res, { ok: false, error: 'Missing eventIndex' }, 400);
+  const eventsPath = path.join(DATA_DIR, 'events.json');
+  const events = readJson(eventsPath);
+  if (eventIndex < 0 || eventIndex >= events.upcoming.length) {
+    return json(res, { ok: false, error: 'Invalid event index' }, 400);
+  }
+  events.upcoming.splice(eventIndex, 1);
+  writeJson(eventsPath, events);
+  json(res, { ok: true });
+}
+
+async function handleDeleteArchiveEntry(req, res) {
+  const { seasonId, concertIndex } = await readBody(req);
+  if (!seasonId || concertIndex == null) return json(res, { ok: false, error: 'Missing required fields' }, 400);
+  const archivePath = path.join(DATA_DIR, `archive-${seasonId}.json`);
+  if (!fs.existsSync(archivePath)) return json(res, { ok: false, error: 'Season not found' }, 404);
+  const archiveData = readJson(archivePath);
+  if (concertIndex < 0 || concertIndex >= archiveData.concerts.length) {
+    return json(res, { ok: false, error: 'Invalid concert index' }, 400);
+  }
+  archiveData.concerts.splice(concertIndex, 1);
+  writeJson(archivePath, archiveData);
+  json(res, { ok: true });
+}
+
 const server = http.createServer(async (req, res) => {
   // CORS preflight
   if (req.method === 'OPTIONS') {
@@ -313,6 +340,14 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === 'POST' && req.url === '/api/update-archive-entry') {
       return await handleUpdateArchiveEntry(req, res);
+    }
+
+    if (req.method === 'POST' && req.url === '/api/delete-event') {
+      return await handleDeleteEvent(req, res);
+    }
+
+    if (req.method === 'POST' && req.url === '/api/delete-archive-entry') {
+      return await handleDeleteArchiveEntry(req, res);
     }
 
     if (req.method === 'GET' && req.url.startsWith('/assets/img/')) {

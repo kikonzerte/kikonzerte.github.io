@@ -194,6 +194,8 @@
   }
   .btn:hover { background: #e07500; }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-danger { background: #aa1100; margin-left: 12px; }
+  .btn-danger:hover { background: #880d00; }
 
   .season-note {
     font-size: 12px;
@@ -475,6 +477,7 @@ Anmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmel
       </div>
 
       <button type="submit" class="btn" id="edit-submit">Änderungen speichern</button>
+      <button type="button" class="btn btn-danger" id="edit-delete">Event löschen</button>
     </div>
   </form>
 </div>
@@ -541,6 +544,7 @@ Anmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmel
       </div>
 
       <button type="submit" class="btn" id="ea-submit">Änderungen speichern</button>
+      <button type="button" class="btn btn-danger" id="ea-delete">Archiveintrag löschen</button>
     </div>
   </form>
 </div>
@@ -1327,6 +1331,44 @@ document.getElementById('form-edit-archive').addEventListener('submit', async e 
 
 loadArchiveSeasons();
 document.querySelector('[data-tab="edit-archive"]').addEventListener('click', loadArchiveSeasons);
+
+// ── Delete handlers ───────────────────────────────────────────────────────────
+document.getElementById('edit-delete').addEventListener('click', async () => {
+  const idx = document.getElementById('edit-event-select').value;
+  if (idx === '') return;
+  const ev = editEvents[parseInt(idx)];
+  if (!confirm(`Event „${ev.title}" wirklich löschen?`)) return;
+
+  try {
+    const res = await fetch(`${API}/api/delete-event`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ eventIndex: parseInt(idx) }) });
+    const data = await res.json();
+    if (!data.ok) { showStatus('Fehler: ' + data.error, 'error'); return; }
+    showStatus(`„${ev.title}" gelöscht.`, 'success');
+    document.getElementById('edit-fields').style.display = 'none';
+    await loadEditEvents();
+    await loadUpcomingEvents();
+  } catch (err) {
+    showStatus('Fehler: ' + err.message, 'error');
+  }
+});
+
+document.getElementById('ea-delete').addEventListener('click', async () => {
+  const idx = document.getElementById('ea-concert-select').value;
+  if (idx === '' || !eaArchiveData) return;
+  const concert = eaArchiveData.concerts[parseInt(idx)];
+  if (!confirm(`Archiveintrag „${concert.title}" wirklich löschen?`)) return;
+
+  try {
+    const res = await fetch(`${API}/api/delete-archive-entry`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seasonId: eaSeasonId, concertIndex: parseInt(idx) }) });
+    const data = await res.json();
+    if (!data.ok) { showStatus('Fehler: ' + data.error, 'error'); return; }
+    showStatus(`„${concert.title}" gelöscht.`, 'success');
+    document.getElementById('ea-fields').style.display = 'none';
+    document.getElementById('ea-season-select').dispatchEvent(new Event('change'));
+  } catch (err) {
+    showStatus('Fehler: ' + err.message, 'error');
+  }
+});
 </script>
 </body>
 </html>
