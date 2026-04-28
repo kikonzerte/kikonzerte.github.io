@@ -45,6 +45,10 @@ build/
 *.ai
 *.sketch
 
+# Local CMS (local-only admin tool, not for deployment)
+cms-server.js
+cms.html
+
 # Flyer Generator
 # Keep latest versions, ignore timestamped backups and temp files
 assets/flyer/generated/flyer-20*.pdf
