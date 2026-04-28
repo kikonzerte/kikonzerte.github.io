@@ -2,7 +2,12 @@
   "season": "25/26",
   "displayName": "KONZERTARCHIV SPIELZEIT 25/26",
   "concerts": [
-        {
+    {
+      "date": "26.04.2026",
+      "title": "Feuerfalter",
+      "image": "assets/img/archive/25-26/26-04-26.webp"
+    },
+    {
       "date": "29.03.2026",
       "title": "Trio III-VII-XII",
       "subtitle": "Blitze und ihre Folgen",
