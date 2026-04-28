@@ -10,10 +10,10 @@
     {
       "date": "29.03.2026",
       "title": "Trio III-VII-XII",
-      "subtitle": "Blitze und ihre Folgen",
-      "image": "assets/img/archive/25-26/26-03-29.webp"
+      "image": "assets/img/archive/25-26/26-03-29.webp",
+      "subtitle": "Blitze und ihre Folgen"
     },
-        {
+    {
       "date": "22.02.2026",
       "title": "Duo Luft-Linien",
       "subtitle": "UN:VERBUNDEN",
@@ -34,7 +34,6 @@
       "title": "Quatuor Amoroso",
       "image": "assets/img/archive/25-26/25-10-26.webp"
     }
-
   ],
   "specialEvents": []
 }

@@ -269,7 +269,8 @@
 <div class="tabs">
   <button class="tab-btn active" data-tab="add">Neues Konzert</button>
   <button class="tab-btn" data-tab="archive">Zum Archiv</button>
-  <button class="tab-btn" data-tab="edit">Bearbeiten</button>
+  <button class="tab-btn" data-tab="edit">Events Bearbeiten</button>
+  <button class="tab-btn" data-tab="edit-archive">Archiv bearbeiten</button>
 </div>
 
 <!-- ===== TAB 1: ADD EVENT ===== -->
@@ -474,6 +475,72 @@ Anmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmel
       </div>
 
       <button type="submit" class="btn" id="edit-submit">Änderungen speichern</button>
+    </div>
+  </form>
+</div>
+
+<!-- ===== TAB 4: EDIT ARCHIVE ENTRY ===== -->
+<div class="tab-panel" id="tab-edit-archive">
+  <form id="form-edit-archive">
+
+    <div class="form-group">
+      <label>Spielzeit</label>
+      <select id="ea-season-select">
+        <option value="">— Spielzeit wählen —</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="ea-concert-wrap" style="display:none">
+      <label>Konzert</label>
+      <select id="ea-concert-select">
+        <option value="">— Konzert wählen —</option>
+      </select>
+    </div>
+
+    <div id="ea-fields" style="display:none">
+      <hr>
+
+      <div class="form-group">
+        <label>Datum <span class="opt">(Format: DD.MM.YYYY)</span></label>
+        <input type="text" id="ea-date" placeholder="29.11.2026">
+      </div>
+
+      <div id="ea-filename-preview" class="filename-preview" style="margin-bottom:12px;"></div>
+
+      <div class="form-group">
+        <label>Titel</label>
+        <input type="text" id="ea-title">
+      </div>
+
+      <div class="form-group">
+        <label>Untertitel <span class="opt">(optional)</span></label>
+        <input type="text" id="ea-subtitle">
+      </div>
+
+      <div class="form-group">
+        <label>Aktuelles Bild</label>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <img id="ea-current-img" style="max-height:100px;border-radius:4px;border:1px solid var(--mid-gray);display:none">
+          <div style="font-size:12px;color:var(--dark-gray);padding-top:4px" id="ea-current-img-path"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Neues Bild <span class="opt">(optional — leer lassen um bestehendes Bild zu behalten)</span></label>
+        <div class="upload-area" id="ea-upload-area">
+          <input type="file" id="ea-image" accept="image/*">
+          <div class="upload-label">
+            <strong>Bild auswählen</strong> oder hierher ziehen<br>
+            <span style="font-size:11px;color:var(--mid-gray)">Alle Formate — wird zu WebP konvertiert</span>
+          </div>
+          <div class="upload-preview" id="ea-upload-preview">
+            <img id="ea-img-thumb">
+            <div class="fname" id="ea-img-fname"></div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn" id="ea-submit">Änderungen speichern</button>
     </div>
   </form>
 </div>
@@ -1135,6 +1202,131 @@ document.getElementById('form-edit').addEventListener('submit', async e => {
 
 loadEditEvents();
 document.querySelector('[data-tab="edit"]').addEventListener('click', loadEditEvents);
+
+// ── TAB 4: Edit archive entry ─────────────────────────────────────────────────
+let eaArchiveData = null;
+let eaSeasonId = null;
+
+async function loadArchiveSeasons() {
+  try {
+    const res = await fetch(`${API}/api/archive-seasons`);
+    const data = await res.json();
+    const sel = document.getElementById('ea-season-select');
+    sel.innerHTML = '<option value="">— Spielzeit wählen —</option>';
+    (data.seasons || []).forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.id;
+      opt.textContent = s.displayName;
+      sel.appendChild(opt);
+    });
+  } catch (err) {
+    showStatus('Fehler beim Laden der Spielzeiten: ' + err.message, 'error');
+  }
+}
+
+document.getElementById('ea-season-select').addEventListener('change', async function () {
+  const seasonId = this.value;
+  document.getElementById('ea-concert-wrap').style.display = 'none';
+  document.getElementById('ea-fields').style.display = 'none';
+  eaArchiveData = null; eaSeasonId = null;
+  if (!seasonId) return;
+
+  try {
+    const res = await fetch(`${API}/api/archive/${seasonId}`);
+    eaArchiveData = await res.json();
+    eaSeasonId = seasonId;
+    const sel = document.getElementById('ea-concert-select');
+    sel.innerHTML = '<option value="">— Konzert wählen —</option>';
+    (eaArchiveData.concerts || []).forEach((c, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${c.title}${c.subtitle ? ' – ' + c.subtitle : ''} (${c.date})`;
+      sel.appendChild(opt);
+    });
+    document.getElementById('ea-concert-wrap').style.display = '';
+  } catch (err) {
+    showStatus('Fehler beim Laden der Spielzeit: ' + err.message, 'error');
+  }
+});
+
+document.getElementById('ea-concert-select').addEventListener('change', function () {
+  const idx = this.value;
+  document.getElementById('ea-fields').style.display = 'none';
+  if (idx === '' || !eaArchiveData) return;
+
+  const concert = eaArchiveData.concerts[parseInt(idx)];
+  document.getElementById('ea-date').value = concert.date;
+  document.getElementById('ea-title').value = concert.title;
+  document.getElementById('ea-subtitle').value = concert.subtitle || '';
+
+  const imgEl = document.getElementById('ea-current-img');
+  imgEl.src = `${API}/${concert.image}`;
+  imgEl.style.display = 'block';
+  document.getElementById('ea-current-img-path').textContent = concert.image;
+
+  document.getElementById('ea-image').value = '';
+  document.getElementById('ea-upload-preview').style.display = 'none';
+
+  updateEaFilenamePreview();
+  document.getElementById('ea-fields').style.display = '';
+});
+
+function updateEaFilenamePreview() {
+  const dateVal = document.getElementById('ea-date').value.trim();
+  const slug = dateVal ? parseDateSlugArchive(dateVal) : null;
+  const preview = document.getElementById('ea-filename-preview');
+  preview.innerHTML = slug && eaSeasonId
+    ? `Bilddatei: <code>assets/img/archive/${eaSeasonId}/${slug}.webp</code>`
+    : `<span style="color:var(--mid-gray)">Bilddatei wird aus Datum abgeleitet</span>`;
+}
+
+document.getElementById('ea-date').addEventListener('input', updateEaFilenamePreview);
+
+setupUpload('ea-image', 'ea-upload-preview', 'ea-img-thumb', 'ea-img-fname', 'ea-upload-area');
+
+document.getElementById('form-edit-archive').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('ea-submit');
+  btn.disabled = true;
+  btn.textContent = 'Wird gespeichert…';
+
+  try {
+    const concertIndex = parseInt(document.getElementById('ea-concert-select').value);
+    const date = document.getElementById('ea-date').value.trim();
+    const title = document.getElementById('ea-title').value.trim();
+    const subtitle = document.getElementById('ea-subtitle').value.trim();
+
+    if (!date || !title) { showStatus('Bitte Datum und Titel ausfüllen.', 'error'); return; }
+
+    const imageFile = document.getElementById('ea-image').files[0];
+    let imageBase64 = null;
+    if (imageFile) imageBase64 = await fileToBase64(imageFile);
+
+    const body = { seasonId: eaSeasonId, concertIndex, date, title, subtitle };
+    if (imageBase64) body.imageBase64 = imageBase64;
+
+    const res = await fetch(`${API}/api/update-archive-entry`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const data = await res.json();
+
+    if (!data.ok) { showStatus('Fehler: ' + data.error, 'error'); return; }
+    showStatus(`Gespeichert! Bild: ${data.imagePath}`, 'success');
+
+    // Reload the season data and re-select the same concert
+    const seasonSel = document.getElementById('ea-season-select');
+    seasonSel.dispatchEvent(new Event('change'));
+    await new Promise(r => setTimeout(r, 100));
+    document.getElementById('ea-concert-select').value = concertIndex;
+    document.getElementById('ea-concert-select').dispatchEvent(new Event('change'));
+  } catch (err) {
+    showStatus('Fehler: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Änderungen speichern';
+  }
+});
+
+loadArchiveSeasons();
+document.querySelector('[data-tab="edit-archive"]').addEventListener('click', loadArchiveSeasons);
 </script>
 </body>
 </html>

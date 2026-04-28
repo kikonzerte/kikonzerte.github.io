@@ -52,9 +52,18 @@ function parseDateForFilenameFromArchive(dateStr) {
 
 async function convertImage(base64, outputPath) {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-  await sharp(Buffer.from(base64, 'base64'))
-    .webp({ quality: 75, effort: 6 })
-    .toFile(outputPath);
+  const input = Buffer.from(base64, 'base64');
+  const MAX_BYTES = 500 * 1024;
+  let quality = 75;
+  let buf;
+  do {
+    buf = await sharp(input)
+      .resize(1920, 1920, { fit: 'inside', withoutEnlargement: true })
+      .webp({ quality, effort: 6 })
+      .toBuffer();
+    quality -= 5;
+  } while (buf.length > MAX_BYTES && quality >= 20);
+  fs.writeFileSync(outputPath, buf);
 }
 
 async function handleAddEvent(req, res) {
@@ -219,6 +228,48 @@ async function handleUpdateEvent(req, res) {
   json(res, { ok: true, imagePath: newImagePath, event: updatedEvent });
 }
 
+async function handleUpdateArchiveEntry(req, res) {
+  const body = await readBody(req);
+  const { seasonId, concertIndex, date, title, subtitle, imageBase64 } = body;
+
+  if (!seasonId || concertIndex == null || !date || !title) {
+    return json(res, { ok: false, error: 'Missing required fields' }, 400);
+  }
+
+  const archivePath = path.join(DATA_DIR, `archive-${seasonId}.json`);
+  if (!fs.existsSync(archivePath)) return json(res, { ok: false, error: 'Season not found' }, 404);
+
+  const archiveData = readJson(archivePath);
+  if (concertIndex < 0 || concertIndex >= archiveData.concerts.length) {
+    return json(res, { ok: false, error: 'Invalid concert index' }, 400);
+  }
+
+  const existing = archiveData.concerts[concertIndex];
+  const fileSlug = parseDateForFilenameFromArchive(date);
+  if (!fileSlug) return json(res, { ok: false, error: 'Could not parse date: ' + date }, 400);
+
+  const newImagePath = `assets/img/archive/${seasonId}/${fileSlug}.webp`;
+  const absNewImagePath = path.join(ROOT, newImagePath);
+
+  if (imageBase64) {
+    await convertImage(imageBase64, absNewImagePath);
+  } else if (newImagePath !== existing.image) {
+    const absOldImagePath = path.join(ROOT, existing.image);
+    if (fs.existsSync(absOldImagePath)) {
+      fs.mkdirSync(path.dirname(absNewImagePath), { recursive: true });
+      fs.copyFileSync(absOldImagePath, absNewImagePath);
+    }
+  }
+
+  const updated = { date, title, image: newImagePath };
+  if (subtitle && subtitle.trim()) updated.subtitle = subtitle.trim();
+
+  archiveData.concerts[concertIndex] = updated;
+  writeJson(archivePath, archiveData);
+
+  json(res, { ok: true, imagePath: newImagePath });
+}
+
 const server = http.createServer(async (req, res) => {
   // CORS preflight
   if (req.method === 'OPTIONS') {
@@ -258,6 +309,10 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === 'POST' && req.url === '/api/update-event') {
       return await handleUpdateEvent(req, res);
+    }
+
+    if (req.method === 'POST' && req.url === '/api/update-archive-entry') {
+      return await handleUpdateArchiveEntry(req, res);
     }
 
     if (req.method === 'GET' && req.url.startsWith('/assets/img/')) {
