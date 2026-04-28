@@ -46,8 +46,9 @@ build/
 *.sketch
 
 # Local CMS (local-only admin tool, not for deployment)
-cms-server.js
-cms.html
+# cms-server.js
+# cms.html
+# start-cms.sh
 
 # Flyer Generator
 # Keep latest versions, ignore timestamped backups and temp files

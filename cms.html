@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KiK CMS</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #002060;
+    --orange: #FF8600;
+    --white: #FFFFFF;
+    --light-gray: #f0f2f5;
+    --mid-gray: #ccc;
+    --dark-gray: #555;
+    --error: #cc2200;
+    --success: #007700;
+    --font: 'Courier New', Courier, monospace;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--light-gray);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  header h1 {
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .tabs {
+    display: flex;
+    background: var(--navy);
+    padding: 0 32px;
+    border-bottom: 3px solid var(--orange);
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: color 0.15s;
+  }
+  .tab-btn:hover { color: var(--white); }
+  .tab-btn.active {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
+  }
+
+  .tab-panel { display: none; padding: 32px; max-width: 720px; }
+  .tab-panel.active { display: block; }
+
+  .form-group { margin-bottom: 20px; }
+  label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark-gray);
+    margin-bottom: 6px;
+  }
+  label .opt { color: var(--mid-gray); font-style: italic; text-transform: none; letter-spacing: 0; }
+
+  input[type="text"], textarea, select {
+    width: 100%;
+    font-family: var(--font);
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1.5px solid var(--mid-gray);
+    border-radius: 4px;
+    background: var(--white);
+    color: var(--navy);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus {
+    border-color: var(--navy);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+
+  .radio-group { display: flex; gap: 24px; margin-top: 4px; }
+  .radio-group label {
+    display: flex; align-items: center; gap: 6px;
+    text-transform: none; letter-spacing: 0; font-size: 14px;
+    color: var(--navy); cursor: pointer; margin: 0;
+  }
+  input[type="radio"] { accent-color: var(--orange); }
+
+  .date-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+  }
+  .date-row input { flex: 1; }
+  .date-row button {
+    background: none;
+    border: 1.5px solid var(--mid-gray);
+    border-radius: 4px;
+    width: 32px;
+    height: 38px;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--dark-gray);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .date-row button:hover { border-color: var(--navy); color: var(--navy); }
+
+  .filename-preview {
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin-top: 4px;
+  }
+  .filename-preview code {
+    background: #e8ecf2;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: var(--font);
+    color: var(--navy);
+  }
+
+  .upload-area {
+    border: 2px dashed var(--mid-gray);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+  .upload-area:hover, .upload-area.dragover {
+    border-color: var(--orange);
+    background: #fff7ee;
+  }
+  .upload-area input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .upload-area .upload-label {
+    pointer-events: none;
+    font-size: 13px;
+    color: var(--dark-gray);
+  }
+  .upload-area .upload-label strong { color: var(--orange); }
+  .upload-preview {
+    display: none;
+    margin-top: 12px;
+    text-align: left;
+  }
+  .upload-preview img {
+    max-height: 120px;
+    max-width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--mid-gray);
+  }
+  .upload-preview .fname {
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin-top: 4px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    font-family: var(--font);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  .btn:hover { background: #e07500; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .season-note {
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 6px;
+  }
+  .season-note.new { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; }
+  .season-note.exists { background: #d1e7dd; border: 1px solid #a3cfbb; color: #0a3622; }
+
+  #status {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: var(--font);
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    display: none;
+    z-index: 1000;
+    max-width: 90vw;
+    text-align: center;
+  }
+  #status.success { background: var(--success); color: var(--white); }
+  #status.error { background: var(--error); color: var(--white); }
+
+  hr { border: none; border-top: 1px solid var(--mid-gray); margin: 28px 0; }
+
+  .date-quickfill {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+  .date-quickfill select {
+    width: auto;
+    font-size: 12px;
+    padding: 4px 6px;
+    height: 30px;
+    flex: 1;
+  }
+  .date-quickfill input[type="number"] {
+    width: 70px;
+    font-size: 12px;
+    padding: 4px 6px;
+    height: 30px;
+  }
+  .date-quickfill button {
+    background: none;
+    border: 1.5px solid var(--mid-gray);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-family: var(--font);
+    color: var(--dark-gray);
+    cursor: pointer;
+    white-space: nowrap;
+    height: 30px;
+  }
+  .date-quickfill button:hover { border-color: var(--navy); color: var(--navy); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Krienser Industrie Konzerte &mdash; CMS</h1>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="add">Neues Konzert</button>
+  <button class="tab-btn" data-tab="archive">Zum Archiv</button>
+  <button class="tab-btn" data-tab="edit">Bearbeiten</button>
+</div>
+
+<!-- ===== TAB 1: ADD EVENT ===== -->
+<div class="tab-panel active" id="tab-add">
+  <form id="form-add">
+
+    <div class="form-group">
+      <label>Titel</label>
+      <input type="text" id="add-title" required placeholder="z.B. Magd & Knecht">
+    </div>
+
+    <div class="form-group">
+      <label>Terminart</label>
+      <div class="radio-group">
+        <label><input type="radio" name="add-datetype" value="single" checked> Einzeltermin</label>
+        <label><input type="radio" name="add-datetype" value="multiple"> Mehrere Termine</label>
+      </div>
+    </div>
+
+    <div class="form-group" id="add-date-single-wrap">
+      <label>Datum <span class="opt">(Format: So, 29.11.26, 17:00)</span></label>
+      <input type="text" id="add-date-single" placeholder="So, 29.11.26, 17:00">
+    </div>
+
+    <div class="form-group" id="add-date-multi-wrap" style="display:none">
+      <label>Termine <span class="opt">(Format: So, 29.11.26, 17:00)</span></label>
+      <div id="add-dates-list"></div>
+      <button type="button" id="add-date-add" style="margin-top:6px;background:none;border:1.5px solid var(--mid-gray);border-radius:4px;padding:4px 12px;cursor:pointer;font-family:var(--font);font-size:13px;color:var(--dark-gray)">+ Termin hinzufügen</button>
+    </div>
+
+    <div id="add-filename-preview" class="filename-preview" style="margin-top:-12px;margin-bottom:12px;"></div>
+
+    <div class="form-group">
+      <label>Konzertbild</label>
+      <div class="upload-area" id="add-upload-area">
+        <input type="file" id="add-image" accept="image/*">
+        <div class="upload-label">
+          <strong>Bild auswählen</strong> oder hierher ziehen<br>
+          <span style="font-size:11px;color:var(--mid-gray)">Alle Formate — wird zu WebP konvertiert</span>
+        </div>
+        <div class="upload-preview" id="add-upload-preview">
+          <img id="add-img-thumb">
+          <div class="fname" id="add-img-fname"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Künstler*innen</label>
+      <textarea id="add-artists" rows="2" placeholder="Julia Muster – Violine&#10;Hans Beispiel – Klavier"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Beschreibung</label>
+      <textarea id="add-description" rows="5" placeholder="Programmbeschreibung..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Footer <span class="opt">(Eintritt, Anmeldung)</span></label>
+      <textarea id="add-footer" rows="3">Eintritt frei – Kollekte.
+
+Anmeldung empfohlen. Erstbesucher:innen für die Wegbeschreibung unbedingt anmelden!</textarea>
+    </div>
+
+    <button type="submit" class="btn" id="add-submit">Speichern</button>
+  </form>
+</div>
+
+<!-- ===== TAB 2: ARCHIVE EVENT ===== -->
+<div class="tab-panel" id="tab-archive">
+  <form id="form-archive">
+
+    <div class="form-group">
+      <label>Konzert auswählen</label>
+      <select id="arc-event-select">
+        <option value="">— Konzert wählen —</option>
+      </select>
+    </div>
+
+    <div id="arc-fields" style="display:none">
+      <hr>
+
+      <div class="form-group">
+        <label>Archivdatum <span class="opt">(Format: DD.MM.YYYY)</span></label>
+        <input type="text" id="arc-date" placeholder="29.11.2026">
+      </div>
+
+      <div class="form-group">
+        <label>Titel</label>
+        <input type="text" id="arc-title" placeholder="Konzert Titel">
+      </div>
+
+      <div class="form-group">
+        <label>Untertitel <span class="opt">(optional — z.B. Künstlernamen)</span></label>
+        <input type="text" id="arc-subtitle" placeholder="Julia Muster, Hans Beispiel">
+      </div>
+
+      <div class="form-group">
+        <label>Spielzeit</label>
+        <input type="text" id="arc-season" placeholder="25-26">
+        <div id="arc-season-note" class="season-note" style="display:none"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Neues Bild <span class="opt">(optional — sonst wird bestehendes Bild übernommen)</span></label>
+        <div class="upload-area" id="arc-upload-area">
+          <input type="file" id="arc-image" accept="image/*">
+          <div class="upload-label">
+            <strong>Bild auswählen</strong> oder hierher ziehen<br>
+            <span style="font-size:11px;color:var(--mid-gray)">Alle Formate — wird zu WebP konvertiert</span>
+          </div>
+          <div class="upload-preview" id="arc-upload-preview">
+            <img id="arc-img-thumb">
+            <div class="fname" id="arc-img-fname"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="arc-filename-preview" class="filename-preview" style="margin-bottom:16px;"></div>
+
+      <button type="submit" class="btn" id="arc-submit">Archivieren</button>
+    </div>
+  </form>
+</div>
+
+<!-- ===== TAB 3: EDIT EVENT ===== -->
+<div class="tab-panel" id="tab-edit">
+  <form id="form-edit">
+
+    <div class="form-group">
+      <label>Konzert auswählen</label>
+      <select id="edit-event-select">
+        <option value="">— Konzert wählen —</option>
+      </select>
+    </div>
+
+    <div id="edit-fields" style="display:none">
+      <hr>
+
+      <div class="form-group">
+        <label>Titel</label>
+        <input type="text" id="edit-title" placeholder="z.B. Magd & Knecht">
+      </div>
+
+      <div class="form-group">
+        <label>Terminart</label>
+        <div class="radio-group">
+          <label><input type="radio" name="edit-datetype" value="single" checked> Einzeltermin</label>
+          <label><input type="radio" name="edit-datetype" value="multiple"> Mehrere Termine</label>
+        </div>
+      </div>
+
+      <div class="form-group" id="edit-date-single-wrap">
+        <label>Datum <span class="opt">(Format: So, 29.11.26, 17:00)</span></label>
+        <input type="text" id="edit-date-single" placeholder="So, 29.11.26, 17:00">
+      </div>
+
+      <div class="form-group" id="edit-date-multi-wrap" style="display:none">
+        <label>Termine <span class="opt">(Format: So, 29.11.26, 17:00)</span></label>
+        <div id="edit-dates-list"></div>
+        <button type="button" id="edit-date-add" style="margin-top:6px;background:none;border:1.5px solid var(--mid-gray);border-radius:4px;padding:4px 12px;cursor:pointer;font-family:var(--font);font-size:13px;color:var(--dark-gray)">+ Termin hinzufügen</button>
+      </div>
+
+      <div id="edit-filename-preview" class="filename-preview" style="margin-top:-12px;margin-bottom:12px;"></div>
+
+      <div class="form-group">
+        <label>Aktuelles Bild</label>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <img id="edit-current-img" style="max-height:100px;border-radius:4px;border:1px solid var(--mid-gray);display:none">
+          <div style="font-size:12px;color:var(--dark-gray);padding-top:4px" id="edit-current-img-path"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Neues Bild <span class="opt">(optional — leer lassen um bestehendes Bild zu behalten)</span></label>
+        <div class="upload-area" id="edit-upload-area">
+          <input type="file" id="edit-image" accept="image/*">
+          <div class="upload-label">
+            <strong>Bild auswählen</strong> oder hierher ziehen<br>
+            <span style="font-size:11px;color:var(--mid-gray)">Alle Formate — wird zu WebP konvertiert</span>
+          </div>
+          <div class="upload-preview" id="edit-upload-preview">
+            <img id="edit-img-thumb">
+            <div class="fname" id="edit-img-fname"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Künstler*innen</label>
+        <textarea id="edit-artists" rows="2"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Beschreibung</label>
+        <textarea id="edit-description" rows="5"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Footer <span class="opt">(Eintritt, Anmeldung)</span></label>
+        <textarea id="edit-footer" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn" id="edit-submit">Änderungen speichern</button>
+    </div>
+  </form>
+</div>
+
+<div id="status"></div>
+
+<script>
+'use strict';
+
+const API = 'http://localhost:3001';
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── Status bar ────────────────────────────────────────────────────────────────
+let statusTimer;
+function showStatus(msg, type = 'success') {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = type;
+  el.style.display = 'block';
+  clearTimeout(statusTimer);
+  statusTimer = setTimeout(() => { el.style.display = 'none'; }, 5000);
+}
+
+// ── Image upload + preview helper ─────────────────────────────────────────────
+function setupUpload(inputId, previewWrapId, thumbId, fnameId, areaId) {
+  const input = document.getElementById(inputId);
+  const wrap = document.getElementById(previewWrapId);
+  const thumb = document.getElementById(thumbId);
+  const fname = document.getElementById(fnameId);
+  const area = document.getElementById(areaId);
+
+  area.addEventListener('dragover', e => { e.preventDefault(); area.classList.add('dragover'); });
+  area.addEventListener('dragleave', () => area.classList.remove('dragover'));
+  area.addEventListener('drop', e => {
+    e.preventDefault();
+    area.classList.remove('dragover');
+    if (e.dataTransfer.files[0]) {
+      input.files = e.dataTransfer.files;
+      input.dispatchEvent(new Event('change'));
+    }
+  });
+
+  input.addEventListener('change', () => {
+    const file = input.files[0];
+    if (!file) { wrap.style.display = 'none'; return; }
+    const reader = new FileReader();
+    reader.onload = e => {
+      thumb.src = e.target.result;
+      fname.textContent = file.name + ' (' + (file.size / 1024).toFixed(0) + ' KB)';
+      wrap.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+setupUpload('add-image', 'add-upload-preview', 'add-img-thumb', 'add-img-fname', 'add-upload-area');
+setupUpload('arc-image', 'arc-upload-preview', 'arc-img-thumb', 'arc-img-fname', 'arc-upload-area');
+
+// ── Date helpers ──────────────────────────────────────────────────────────────
+function parseDateSlug(dateStr) {
+  // "So, 29.11.26, 17:00" → "26-11-29"
+  const m = dateStr.match(/(\d{2})\.(\d{2})\.(\d{2})/);
+  return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
+}
+
+function parseDateSlugArchive(dateStr) {
+  // "29.11.2026" → "26-11-29"
+  const m = dateStr.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+  if (!m) return null;
+  return `${m[3].slice(2)}-${m[2]}-${m[1]}`;
+}
+
+function detectSeason(archiveDateStr) {
+  const m = archiveDateStr.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+  if (!m) return null;
+  const month = parseInt(m[2]);
+  const year = parseInt(m[3]);
+  const yy = year % 100;
+  const pad = n => n.toString().padStart(2, '0');
+  return month >= 9 ? `${pad(yy)}-${pad(yy + 1)}` : `${pad(yy - 1)}-${pad(yy)}`;
+}
+
+function eventDateForArchive(event) {
+  // Extract a DD.MM.YYYY string from event's date/dates field
+  const raw = event.dates ? event.dates[0] : event.date;
+  const m = raw.match(/(\d{2})\.(\d{2})\.(\d{2})/);
+  if (!m) return '';
+  // m[3] = 2-digit year → assume 2000s
+  return `${m[1]}.${m[2]}.20${m[3]}`;
+}
+
+// ── Last-Sunday quick-fill ────────────────────────────────────────────────────
+const MONTHS_DE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
+let qfDefault = null; // { month: 1-12, year: YYYY } — set after events are loaded
+
+const QF_SKIP_MONTHS = new Set([12, 1, 6, 7, 8]); // Dec, Jan, Jun, Jul, Aug
+
+function computeSuggestedDefault(upcoming) {
+  // Find the latest month/year across all upcoming events
+  let latestYear = 0, latestMonth = 0;
+  upcoming.forEach(ev => {
+    (ev.dates || [ev.date]).forEach(raw => {
+      const m = raw && raw.match(/(\d{2})\.(\d{2})\.(\d{2})/);
+      if (m) {
+        const mo = parseInt(m[2]), yr = 2000 + parseInt(m[3]);
+        if (yr > latestYear || (yr === latestYear && mo > latestMonth)) {
+          latestYear = yr; latestMonth = mo;
+        }
+      }
+    });
+  });
+
+  // Start from the month after the last event (fallback: current month)
+  let month, year;
+  if (latestYear > 0) {
+    month = latestMonth + 1; year = latestYear;
+    if (month > 12) { month = 1; year++; }
+  } else {
+    const now = new Date();
+    month = now.getMonth() + 1; year = now.getFullYear();
+  }
+
+  // Skip excluded months
+  for (let i = 0; i < 24; i++) {
+    if (!QF_SKIP_MONTHS.has(month)) return { month, year };
+    if (++month > 12) { month = 1; year++; }
+  }
+  const now = new Date();
+  return { month: now.getMonth() + 1, year: now.getFullYear() };
+}
+
+function updateQuickfillDefaults(month, year) {
+  document.querySelectorAll('.date-quickfill').forEach(qf => {
+    qf.querySelector('.qf-month').value = month;
+    qf.querySelector('.qf-year').value = year;
+  });
+}
+
+function lastSundayOfMonth(year, month) {
+  const d = new Date(year, month, 0); // last day of month (month is 1-based here)
+  d.setDate(d.getDate() - d.getDay()); // walk back to Sunday
+  return d;
+}
+
+function formatSundayDate(d) {
+  const dd = d.getDate().toString().padStart(2, '0');
+  const mm = (d.getMonth() + 1).toString().padStart(2, '0');
+  const yy = (d.getFullYear() % 100).toString().padStart(2, '0');
+  return `So, ${dd}.${mm}.${yy}, 17:00`;
+}
+
+function makeQuickfill(targetInput) {
+  const now = new Date();
+  const defaults = qfDefault || { month: now.getMonth() + 1, year: now.getFullYear() };
+  const div = document.createElement('div');
+  div.className = 'date-quickfill';
+
+  const sel = document.createElement('select');
+  sel.className = 'qf-month';
+  MONTHS_DE.forEach((name, i) => {
+    const opt = document.createElement('option');
+    opt.value = i + 1;
+    opt.textContent = name;
+    opt.selected = (i + 1) === defaults.month;
+    sel.appendChild(opt);
+  });
+
+  const yearInput = document.createElement('input');
+  yearInput.type = 'number';
+  yearInput.className = 'qf-year';
+  yearInput.value = defaults.year;
+  yearInput.min = 2020;
+  yearInput.max = 2040;
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.textContent = 'letzten So. eintragen';
+  btn.addEventListener('click', () => {
+    targetInput.value = formatSundayDate(lastSundayOfMonth(parseInt(yearInput.value), parseInt(sel.value)));
+    targetInput.dispatchEvent(new Event('input'));
+  });
+
+  div.append(sel, yearInput, btn);
+  return div;
+}
+
+// ── TAB 1: Add event ──────────────────────────────────────────────────────────
+const addDateSingleWrap = document.getElementById('add-date-single-wrap');
+const addDateMultiWrap = document.getElementById('add-date-multi-wrap');
+const addDatesList = document.getElementById('add-dates-list');
+const addFilenamePreview = document.getElementById('add-filename-preview');
+
+document.querySelectorAll('input[name="add-datetype"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    const multi = radio.value === 'multiple';
+    addDateSingleWrap.style.display = multi ? 'none' : '';
+    addDateMultiWrap.style.display = multi ? '' : 'none';
+    updateAddFilenamePreview();
+  });
+});
+
+function updateAddFilenamePreview() {
+  const isMulti = document.querySelector('input[name="add-datetype"]:checked').value === 'multiple';
+  let firstDate;
+  if (isMulti) {
+    const inputs = addDatesList.querySelectorAll('[data-date-input]');
+    firstDate = inputs[0] ? inputs[0].value.trim() : '';
+  } else {
+    firstDate = document.getElementById('add-date-single').value.trim();
+  }
+  const slug = firstDate ? parseDateSlug(firstDate) : null;
+  addFilenamePreview.innerHTML = slug
+    ? `Bilddatei: <code>assets/img/upcoming/${slug}.webp</code>`
+    : `<span style="color:var(--mid-gray)">Bilddatei wird aus Datum abgeleitet</span>`;
+}
+
+document.getElementById('add-date-single').addEventListener('input', updateAddFilenamePreview);
+
+function addDateRow(value = '') {
+  const entry = document.createElement('div');
+  entry.className = 'date-entry';
+
+  const row = document.createElement('div');
+  row.className = 'date-row';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'So, 29.11.26, 17:00';
+  input.dataset.dateInput = '';
+  if (value) input.value = value;
+  input.addEventListener('input', updateAddFilenamePreview);
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.title = 'Entfernen';
+  removeBtn.innerHTML = '&#x2212;';
+  removeBtn.addEventListener('click', () => {
+    if (addDatesList.querySelectorAll('.date-entry').length > 2) {
+      entry.remove();
+      updateAddFilenamePreview();
+    }
+  });
+
+  row.append(input, removeBtn);
+  entry.append(row, makeQuickfill(input));
+  addDatesList.appendChild(entry);
+}
+
+// Init: two default rows + quickfill on single-date input
+addDateRow(); addDateRow();
+document.getElementById('add-date-single')
+  .insertAdjacentElement('afterend', makeQuickfill(document.getElementById('add-date-single')));
+
+document.getElementById('add-date-add').addEventListener('click', () => addDateRow());
+
+async function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      // Strip data-URI prefix
+      const b64 = e.target.result.split(',')[1];
+      resolve(b64);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+document.getElementById('form-add').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('add-submit');
+  btn.disabled = true;
+  btn.textContent = 'Wird gespeichert…';
+
+  try {
+    const isMulti = document.querySelector('input[name="add-datetype"]:checked').value === 'multiple';
+    const title = document.getElementById('add-title').value.trim();
+    const artists = document.getElementById('add-artists').value.trim();
+    const description = document.getElementById('add-description').value.trim();
+    const footer = document.getElementById('add-footer').value.trim();
+    const imageFile = document.getElementById('add-image').files[0];
+
+    if (!title || !artists || !description || !footer || !imageFile) {
+      showStatus('Bitte alle Pflichtfelder ausfüllen und ein Bild auswählen.', 'error');
+      return;
+    }
+
+    let date, dates;
+    if (isMulti) {
+      dates = Array.from(addDatesList.querySelectorAll('[data-date-input]'))
+        .map(i => i.value.trim()).filter(Boolean);
+      if (dates.length < 2) { showStatus('Bitte mindestens 2 Termine eingeben.', 'error'); return; }
+    } else {
+      date = document.getElementById('add-date-single').value.trim();
+      if (!date) { showStatus('Bitte ein Datum eingeben.', 'error'); return; }
+    }
+
+    const imageBase64 = await fileToBase64(imageFile);
+
+    const body = { title, dateType: isMulti ? 'multiple' : 'single', artists, description, footer, imageBase64, imageMimeType: imageFile.type };
+    if (isMulti) body.dates = dates; else body.date = date;
+
+    const res = await fetch(`${API}/api/add-event`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const data = await res.json();
+
+    if (!data.ok) { showStatus('Fehler: ' + data.error, 'error'); return; }
+    showStatus(`Gespeichert! Bild: ${data.imagePath}`, 'success');
+    document.getElementById('form-add').reset();
+    document.getElementById('add-upload-preview').style.display = 'none';
+    addFilenamePreview.innerHTML = '';
+    // Reset multi-date to 2 rows
+    addDatesList.innerHTML = '';
+    addDateRow(); addDateRow();
+  } catch (err) {
+    showStatus('Fehler: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Speichern';
+  }
+});
+
+// ── TAB 2: Archive event ──────────────────────────────────────────────────────
+let upcomingEvents = [];
+
+async function loadUpcomingEvents() {
+  try {
+    const res = await fetch(`${API}/api/events`);
+    const data = await res.json();
+    upcomingEvents = data.upcoming || [];
+    const sel = document.getElementById('arc-event-select');
+    sel.innerHTML = '<option value="">— Konzert wählen —</option>';
+    upcomingEvents.forEach((ev, i) => {
+      const dateStr = ev.dates ? ev.dates[0] : ev.date;
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${ev.title} (${dateStr})`;
+      sel.appendChild(opt);
+    });
+    qfDefault = computeSuggestedDefault(upcomingEvents);
+    updateQuickfillDefaults(qfDefault.month, qfDefault.year);
+  } catch (err) {
+    showStatus('Fehler beim Laden der Konzerte: ' + err.message, 'error');
+  }
+}
+
+loadUpcomingEvents();
+document.querySelector('[data-tab="archive"]').addEventListener('click', loadUpcomingEvents);
+
+document.getElementById('arc-event-select').addEventListener('change', async function() {
+  const idx = this.value;
+  const fields = document.getElementById('arc-fields');
+  if (idx === '') { fields.style.display = 'none'; return; }
+  fields.style.display = '';
+
+  const ev = upcomingEvents[parseInt(idx)];
+  const archiveDate = eventDateForArchive(ev);
+  document.getElementById('arc-date').value = archiveDate;
+  document.getElementById('arc-title').value = ev.title;
+  document.getElementById('arc-subtitle').value = '';
+
+  const season = archiveDate ? detectSeason(archiveDate) : '';
+  document.getElementById('arc-season').value = season || '';
+  if (season) await updateSeasonNote(season);
+
+  updateArcFilenamePreview();
+});
+
+document.getElementById('arc-date').addEventListener('input', function() {
+  const season = detectSeason(this.value.trim());
+  if (season) {
+    document.getElementById('arc-season').value = season;
+    updateSeasonNote(season);
+  }
+  updateArcFilenamePreview();
+});
+
+document.getElementById('arc-season').addEventListener('input', function() {
+  updateSeasonNote(this.value.trim());
+  updateArcFilenamePreview();
+});
+
+function updateArcFilenamePreview() {
+  const dateVal = document.getElementById('arc-date').value.trim();
+  const season = document.getElementById('arc-season').value.trim();
+  const slug = dateVal ? parseDateSlugArchive(dateVal) : null;
+  const preview = document.getElementById('arc-filename-preview');
+  if (slug && season) {
+    preview.innerHTML = `Bilddatei: <code>assets/img/archive/${season}/${slug}.webp</code>`;
+  } else {
+    preview.innerHTML = `<span style="color:var(--mid-gray)">Bilddatei wird aus Datum und Spielzeit abgeleitet</span>`;
+  }
+}
+
+async function updateSeasonNote(seasonId) {
+  const note = document.getElementById('arc-season-note');
+  if (!seasonId || !/^\d{2}-\d{2}$/.test(seasonId)) { note.style.display = 'none'; return; }
+  try {
+    const res = await fetch(`${API}/api/archive/${seasonId}`);
+    const [a, b] = seasonId.split('-');
+    if (res.status === 404) {
+      note.textContent = `Spielzeit ${a}/${b} existiert noch nicht — sie wird automatisch erstellt.`;
+      note.className = 'season-note new';
+    } else {
+      note.textContent = `Spielzeit ${a}/${b} vorhanden.`;
+      note.className = 'season-note exists';
+    }
+    note.style.display = 'block';
+  } catch {
+    note.style.display = 'none';
+  }
+}
+
+document.getElementById('form-archive').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('arc-submit');
+  btn.disabled = true;
+  btn.textContent = 'Wird archiviert…';
+
+  try {
+    const idx = document.getElementById('arc-event-select').value;
+    const archiveDate = document.getElementById('arc-date').value.trim();
+    const archiveTitle = document.getElementById('arc-title').value.trim();
+    const archiveSubtitle = document.getElementById('arc-subtitle').value.trim();
+    const seasonId = document.getElementById('arc-season').value.trim();
+
+    if (idx === '' || !archiveDate || !archiveTitle || !seasonId) {
+      showStatus('Bitte alle Pflichtfelder ausfüllen.', 'error');
+      return;
+    }
+
+    const imageFile = document.getElementById('arc-image').files[0];
+    let imageBase64 = null, imageMimeType = null;
+    if (imageFile) {
+      imageBase64 = await fileToBase64(imageFile);
+      imageMimeType = imageFile.type;
+    }
+
+    const body = { eventIndex: parseInt(idx), archiveDate, archiveTitle, archiveSubtitle, seasonId };
+    if (imageBase64) { body.imageBase64 = imageBase64; body.imageMimeType = imageMimeType; }
+
+    const res = await fetch(`${API}/api/archive-event`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const data = await res.json();
+
+    if (!data.ok) { showStatus('Fehler: ' + data.error, 'error'); return; }
+    showStatus(`Archiviert in Spielzeit ${data.archivedTo}. Bild: ${data.imagePath}`, 'success');
+
+    document.getElementById('form-archive').reset();
+    document.getElementById('arc-upload-preview').style.display = 'none';
+    document.getElementById('arc-fields').style.display = 'none';
+    document.getElementById('arc-season-note').style.display = 'none';
+    document.getElementById('arc-filename-preview').innerHTML = '';
+    await loadUpcomingEvents();
+    await loadEditEvents();
+  } catch (err) {
+    showStatus('Fehler: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Archivieren';
+  }
+});
+
+// ── TAB 3: Edit event ─────────────────────────────────────────────────────────
+let editEvents = [];
+
+async function loadEditEvents() {
+  try {
+    const res = await fetch(`${API}/api/events`);
+    const data = await res.json();
+    editEvents = data.upcoming || [];
+    const sel = document.getElementById('edit-event-select');
+    const prevIdx = sel.value;
+    sel.innerHTML = '<option value="">— Konzert wählen —</option>';
+    editEvents.forEach((ev, i) => {
+      const dateStr = ev.dates ? ev.dates[0] : ev.date;
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${ev.title} (${dateStr})`;
+      sel.appendChild(opt);
+    });
+    // Re-select same index if still valid (e.g. after save)
+    if (prevIdx !== '' && parseInt(prevIdx) < editEvents.length) sel.value = prevIdx;
+  } catch (err) {
+    showStatus('Fehler beim Laden der Konzerte: ' + err.message, 'error');
+  }
+}
+
+const editDatesList = document.getElementById('edit-dates-list');
+const editFilenamePreview = document.getElementById('edit-filename-preview');
+
+function updateEditFilenamePreview() {
+  const isMulti = document.querySelector('input[name="edit-datetype"]:checked').value === 'multiple';
+  let firstDate;
+  if (isMulti) {
+    const inputs = editDatesList.querySelectorAll('[data-date-input]');
+    firstDate = inputs[0] ? inputs[0].value.trim() : '';
+  } else {
+    firstDate = document.getElementById('edit-date-single').value.trim();
+  }
+  const slug = firstDate ? parseDateSlug(firstDate) : null;
+  editFilenamePreview.innerHTML = slug
+    ? `Bilddatei: <code>assets/img/upcoming/${slug}.webp</code>`
+    : `<span style="color:var(--mid-gray)">Bilddatei wird aus Datum abgeleitet</span>`;
+}
+
+function addEditDateRow(value = '') {
+  const entry = document.createElement('div');
+  entry.className = 'date-entry';
+
+  const row = document.createElement('div');
+  row.className = 'date-row';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'So, 29.11.26, 17:00';
+  input.dataset.dateInput = '';
+  if (value) input.value = value;
+  input.addEventListener('input', updateEditFilenamePreview);
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.title = 'Entfernen';
+  removeBtn.innerHTML = '&#x2212;';
+  removeBtn.addEventListener('click', () => {
+    if (editDatesList.querySelectorAll('.date-entry').length > 2) {
+      entry.remove();
+      updateEditFilenamePreview();
+    }
+  });
+
+  row.append(input, removeBtn);
+  entry.append(row, makeQuickfill(input));
+  editDatesList.appendChild(entry);
+}
+
+document.querySelectorAll('input[name="edit-datetype"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    const multi = radio.value === 'multiple';
+    document.getElementById('edit-date-single-wrap').style.display = multi ? 'none' : '';
+    document.getElementById('edit-date-multi-wrap').style.display = multi ? '' : 'none';
+    updateEditFilenamePreview();
+  });
+});
+
+document.getElementById('edit-date-single').addEventListener('input', updateEditFilenamePreview);
+document.getElementById('edit-date-add').addEventListener('click', () => addEditDateRow());
+
+setupUpload('edit-image', 'edit-upload-preview', 'edit-img-thumb', 'edit-img-fname', 'edit-upload-area');
+
+document.getElementById('edit-event-select').addEventListener('change', function() {
+  const idx = this.value;
+  const fields = document.getElementById('edit-fields');
+  if (idx === '') { fields.style.display = 'none'; return; }
+  fields.style.display = '';
+
+  const ev = editEvents[parseInt(idx)];
+  document.getElementById('edit-title').value = ev.title;
+  document.getElementById('edit-artists').value = ev.artists;
+  document.getElementById('edit-description').value = ev.description;
+  document.getElementById('edit-footer').value = ev.footer;
+
+  // Date type
+  const isMulti = Array.isArray(ev.dates);
+  document.querySelector(`input[name="edit-datetype"][value="${isMulti ? 'multiple' : 'single'}"]`).checked = true;
+  document.getElementById('edit-date-single-wrap').style.display = isMulti ? 'none' : '';
+  document.getElementById('edit-date-multi-wrap').style.display = isMulti ? '' : 'none';
+
+  if (isMulti) {
+    editDatesList.innerHTML = '';
+    ev.dates.forEach(d => addEditDateRow(d));
+  } else {
+    document.getElementById('edit-date-single').value = ev.date;
+  }
+
+  // Current image
+  const imgEl = document.getElementById('edit-current-img');
+  imgEl.src = `${API}/${ev.image}`;
+  imgEl.style.display = 'block';
+  document.getElementById('edit-current-img-path').textContent = ev.image;
+
+  // Clear any previously selected new image
+  document.getElementById('edit-image').value = '';
+  document.getElementById('edit-upload-preview').style.display = 'none';
+
+  updateEditFilenamePreview();
+});
+
+document.getElementById('form-edit').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('edit-submit');
+  btn.disabled = true;
+  btn.textContent = 'Wird gespeichert…';
+
+  try {
+    const idx = document.getElementById('edit-event-select').value;
+    if (idx === '') { showStatus('Kein Konzert ausgewählt.', 'error'); return; }
+
+    const isMulti = document.querySelector('input[name="edit-datetype"]:checked').value === 'multiple';
+    const title = document.getElementById('edit-title').value.trim();
+    const artists = document.getElementById('edit-artists').value.trim();
+    const description = document.getElementById('edit-description').value.trim();
+    const footer = document.getElementById('edit-footer').value.trim();
+
+    if (!title || !artists || !description || !footer) {
+      showStatus('Bitte alle Pflichtfelder ausfüllen.', 'error');
+      return;
+    }
+
+    let date, dates;
+    if (isMulti) {
+      dates = Array.from(editDatesList.querySelectorAll('[data-date-input]'))
+        .map(i => i.value.trim()).filter(Boolean);
+      if (dates.length < 2) { showStatus('Bitte mindestens 2 Termine eingeben.', 'error'); return; }
+    } else {
+      date = document.getElementById('edit-date-single').value.trim();
+      if (!date) { showStatus('Bitte ein Datum eingeben.', 'error'); return; }
+    }
+
+    const imageFile = document.getElementById('edit-image').files[0];
+    let imageBase64 = null, imageMimeType = null;
+    if (imageFile) {
+      imageBase64 = await fileToBase64(imageFile);
+      imageMimeType = imageFile.type;
+    }
+
+    const body = { eventIndex: parseInt(idx), title, dateType: isMulti ? 'multiple' : 'single', artists, description, footer };
+    if (isMulti) body.dates = dates; else body.date = date;
+    if (imageBase64) { body.imageBase64 = imageBase64; body.imageMimeType = imageMimeType; }
+
+    const res = await fetch(`${API}/api/update-event`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const data = await res.json();
+
+    if (!data.ok) { showStatus('Fehler: ' + data.error, 'error'); return; }
+    showStatus(`Gespeichert! Bild: ${data.imagePath}`, 'success');
+
+    await loadEditEvents();
+    await loadUpcomingEvents();
+
+    // Re-select the same event to refresh the form
+    const sel = document.getElementById('edit-event-select');
+    sel.value = idx;
+    sel.dispatchEvent(new Event('change'));
+  } catch (err) {
+    showStatus('Fehler: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Änderungen speichern';
+  }
+});
+
+loadEditEvents();
+document.querySelector('[data-tab="edit"]').addEventListener('click', loadEditEvents);
+</script>
+</body>
+</html>
