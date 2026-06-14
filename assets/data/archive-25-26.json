@@ -3,6 +3,11 @@
   "displayName": "KONZERTARCHIV SPIELZEIT 25/26",
   "concerts": [
     {
+      "date": "30./31.05.2026",
+      "title": "liminal space",
+      "image": "assets/img/archive/25-26/26-05-31.webp"
+    },
+    {
       "date": "26.04.2026",
       "title": "Feuerfalter",
       "image": "assets/img/archive/25-26/26-04-26.webp"
