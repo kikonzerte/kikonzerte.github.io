@@ -67,38 +67,42 @@ async function loadEvents() {
 /**
  * Generate HTML for event blocks
  */
-function generateEventHTML(events, flyerDescriptions) {
+function generateEventHTML(events, flyerTitles, flyerDescriptions) {
   return events.map(event => {
     const dateDisplay = formatDate(event.dates || event.date);
     // Fix image path - events.json has "assets/img/..." but we need "../img/..." from flyer folder
     const imagePath = event.image.replace('assets/', '../');
-    
-    // Use flyer-specific description if available, otherwise fall back to original
+
+    // Use flyer-specific title/description if available, otherwise fall back to original
+    const title = flyerTitles[event.title] || event.title;
     const description = flyerDescriptions[event.title] || event.description;
-    
+
     return `      <!-- ${event.title} -->
       <div class="event-block">
         <div class="event-content">
-          <h2 class="event-title">${event.title}</h2>
+          <h2 class="event-title">${title}</h2>
           <div class="event-date">${dateDisplay}</div>
           <div class="event-description">${description}</div>
         </div>
-        <img src="${imagePath}" alt="${event.title}" class="event-image" />
+        <img src="${imagePath}" alt="${title}" class="event-image" />
       </div>`;
   }).join('\n\n');
 }
 
 /**
- * Load flyer-specific descriptions
+ * Load flyer-specific titles and descriptions
  */
-async function loadFlyerDescriptions() {
+async function loadFlyerOverrides() {
   try {
     const data = await fs.readFile(FLYER_EVENTS_PATH, 'utf-8');
     const json = JSON.parse(data);
-    return json['event-descriptions'] || {};
+    return {
+      titles: json['event-titles'] || {},
+      descriptions: json['event-descriptions'] || {}
+    };
   } catch (error) {
-    console.warn('⚠️  Could not load flyer-events.json, using original descriptions');
-    return {};
+    console.warn('⚠️  Could not load flyer-events.json, using original titles/descriptions');
+    return { titles: {}, descriptions: {} };
   }
 }
 
@@ -120,12 +124,18 @@ async function buildHTML() {
       console.log(`   ${i + 1}. ${event.title} - ${formatDate(event.dates || event.date)}`);
     });
     
-    console.log('📝 Loading flyer descriptions...');
-    const flyerDescriptions = await loadFlyerDescriptions();
-    
+    console.log('📝 Loading flyer titles/descriptions...');
+    const { titles: flyerTitles, descriptions: flyerDescriptions } = await loadFlyerOverrides();
+
+    events.forEach(event => {
+      if (flyerTitles[event.title]) {
+        console.log(`   ✂️  "${event.title}" → "${flyerTitles[event.title]}"`);
+      }
+    });
+
     console.log('\n🎨 Generating HTML...');
-    
-    const eventsHTML = generateEventHTML(events, flyerDescriptions);
+
+    const eventsHTML = generateEventHTML(events, flyerTitles, flyerDescriptions);
     
     const html = `<!DOCTYPE html>
 <html lang="de">

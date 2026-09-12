@@ -14,18 +14,24 @@ npm run generate-flyer
 
 ## Editing
 
-### Event Descriptions
-Edit `flyer-events.json` to customize descriptions for the flyer (max ~25 words):
+### Event Titles & Descriptions
+Edit `flyer-events.json` to customize titles and descriptions for the flyer
+(descriptions max ~25 words). Both maps are keyed by the **full title from
+`events.json`** and fall back to it if not defined:
 
 ```json
 {
+  "event-titles": {
+    "Lauter Luisen – Katertage": "Lauter Luisen"
+  },
   "event-descriptions": {
     "Event Title": "Short description with artist names."
   }
 }
 ```
 
-Falls back to `events.json` descriptions if not defined.
+Use `event-titles` when a title is too long for one flyer line — typically by
+dropping the programme name after the dash.
 
 ### Design (CSS)
 1. Open `flyer-preview.html` in browser

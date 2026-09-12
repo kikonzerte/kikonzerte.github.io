@@ -1,7 +1,15 @@
 {
+  "event-titles": {
+    "Lauter Luisen – Katertage": "Lauter Luisen",
+    "Duo Giannoni-Suflyan – Ungehörte Frauen": "Duo Giannoni-Suflyan"
+  },
   "event-descriptions": {
     "UN:VERBUNDEN": "Elena Schneider und Paula Soriano Ibáñez erforschen als Duo «Luft-Linien» Distanz und Verbundenheit mit zeitgenössischen Kompositionen für Stimme und Saxofon.",
     "Blitze und ihre Folgen": "Neben Improvisationen und Konzeptstücken bringt das Trio III-VII-XII in Zusammenarbeit mit Ursina Maria Braun und Roland Moser erarbeitete Werke zur Aufführung.",
-    "Feuerfalter": "Despina Corazza und Lukas DeRungs verbinden langjährige Freundschaft mit musikalischem Experiment. Jazz/Pop-Covers und Eigenkompositionen."
+    "Feuerfalter": "Despina Corazza und Lukas DeRungs verbinden langjährige Freundschaft mit musikalischem Experiment. Jazz/Pop-Covers und Eigenkompositionen.",
+    "Magd & Knecht": "Das Duo Magd & Knecht erkundet mit der ungewöhnlichen Kombination ihrer Instrumente neue musikalische Welten und verknüpft mit viel Leichtigkeit Neues mit Altbekanntem.",
+    "Lauter Luisen – Katertage": "Im Programm \"Katertage\" wird überraschendes literarisches Material vertont - moderne Lyrik von Kurt Marti, Hilde Domin und Rose Ausländer sowie spielerische Anagramme von Schweizer Autor*innen.",
+    "Duo Giannoni-Suflyan – Ungehörte Frauen": "Das Duo lässt die Musik von zahlreichen Komponistinnen erklingen: Ein Dialog über Zeit und Raum hinweg – eine Feier der weiblichen Stimme, die sich ihren Platz in der Welt komponiert."
+
   }
 }

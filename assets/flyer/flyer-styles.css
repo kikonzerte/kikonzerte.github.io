@@ -76,10 +76,10 @@ body {
 .event-block {
   background: var(--color-dark-gray);
   margin-bottom: 40px;
-  padding: 40px;
+  padding: 35px;
   display: flex;
   justify-content: space-between;
-  gap: 40px;
+  gap: 35px;
   height: 600px;
   width: 100%;
   box-sizing: border-box;
@@ -102,7 +102,7 @@ body {
   font-family: var(--font-heading);
   font-size: 66px;
   color: var(--color-orange);
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
   line-height: 1.1;
   text-transform: none;
   white-space: normal;
@@ -114,7 +114,7 @@ body {
   font-size: 48px;
   font-weight: bold;
   color: var(--color-white);
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   border-bottom: 3px solid var(--color-white);
   display: inline-block;
   max-width: fit-content;
