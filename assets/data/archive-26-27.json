@@ -1,0 +1,12 @@
+{
+  "season": "26/27",
+  "displayName": "KONZERTARCHIV SPIELZEIT 26/27",
+  "concerts": [
+    {
+      "date": "27.09.2026",
+      "title": "Magd & Knecht",
+      "image": "assets/img/archive/26-27/26-09-27.webp"
+    }
+  ],
+  "specialEvents": []
+}

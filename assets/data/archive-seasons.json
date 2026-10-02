@@ -1,6 +1,11 @@
 {
-  "currentSeason": "25-26",
+  "currentSeason": "26-27",
   "seasons": [
+    {
+      "id": "26-27",
+      "displayName": "SPIELZEIT 26/27",
+      "file": "assets/data/archive-26-27.json"
+    },
     {
       "id": "25-26",
       "displayName": "SPIELZEIT 25/26",
