@@ -164,7 +164,10 @@
             <p>Melde dich an, um keine Neuigkeiten zu verpassen!</p>
             
             <div class="form-container">
-              <input id="contact_email" name="contact[email]" placeholder="Email" type="email" required/>
+              <input id="contact_email" name="contact[email]" placeholder="Email" type="email" autocomplete="email" required/>
+              <div class="newsletter-captcha">
+                <div class="frc-captcha dark" data-sitekey="FCMJJH1PKRG8RDER" data-theme="dark" data-lang="de"></div>
+              </div>
               <button type="submit">ANMELDEN</button>
             </div>
             
@@ -175,6 +178,7 @@
     </div>
   </footer>
 
+  <script async defer src="https://unpkg.com/friendly-challenge@0.9.11/widget.module.min.js"></script>
   <script src="assets/js/header.js"></script>
 </body>
 </html>

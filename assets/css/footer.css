@@ -107,7 +107,15 @@
   border-color: var(--color-orange);
 }
 
-.form-container button {
+.newsletter-captcha {
+  width: 100%;
+}
+
+.newsletter-captcha .frc-captcha {
+  width: 100%;
+}
+
+.form-container > button {
   background-color: var(--color-orange);
   color: var(--color-white);
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -122,7 +130,7 @@
   transition: all var(--transition-fast);
 }
 
-.form-container button:hover {
+.form-container > button:hover {
   background-color: var(--color-white);
   color: var(--color-black);
 }
@@ -182,6 +190,7 @@
 
   .form-container {
     flex-direction: row;
+    flex-wrap: wrap;
     gap: var(--spacing-sm);
     max-width: 100%;
     align-self: flex-start;
@@ -191,7 +200,12 @@
     flex: 1;
   }
 
-  .form-container button {
+  .newsletter-captcha {
+    order: 1; /* On desktop, captcha sits on its own row below email + button */
+    flex-basis: 100%;
+  }
+
+  .form-container > button {
     width: auto;
   }
 }
